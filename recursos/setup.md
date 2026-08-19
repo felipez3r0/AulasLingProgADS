@@ -72,7 +72,7 @@ propósito — eles são o enunciado em forma executável. Deixá-los verdes é 
 npm test                  # exemplos de todas as aulas (devem passar)
 npm test -- aula05        # exemplos da aula 05
 npm run ex -- aula05      # exercícios da aula 05, em watch (reroda ao salvar)
-npm run ex -- aula05/01   # só o exercício 1
+npm run ex -- 01-media    # um exercício só, pelo nome do arquivo
 npm run typecheck         # checagem de tipos, sem rodar nada
 npm run check             # tudo junto
 ```

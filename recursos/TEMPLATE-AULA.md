@@ -57,7 +57,7 @@ Explicação curta e direta.
 
 > **Quando a IA escreve isto:** qual erro típico este conceito permite detectar.
 
-**Verifique:** `npm test -- aulaNN/exemplos/01`
+**Verifique:** `npm test -- 01-nome`
 
 ## 2..N. Demais conceitos
 
@@ -142,7 +142,7 @@ Faça **nesta ordem**. O nível 🚫 constrói o modelo mental que torna 🤝 e 
 > Desligue as sugestões: `Ctrl+Shift+P` → *GitHub Copilot: Disable Completions*.
 
 **1. Título**
-Arquivo: `exercicios/01-nome.ts` · Teste: `npm run ex -- aulaNN/01`
+Arquivo: `exercicios/01-nome.ts` · Teste: `npm run ex -- 01-nome`
 
 - passos
 - **Aceite:** todos os casos verdes, sem alterar o arquivo de teste.
@@ -150,7 +150,7 @@ Arquivo: `exercicios/01-nome.ts` · Teste: `npm run ex -- aulaNN/01`
 ### 🤝 Com IA assistida — você dirige, ela digita
 
 **2. Título**
-Arquivo: `exercicios/02-nome.ts` · Teste: `npm run ex -- aulaNN/02`
+Arquivo: `exercicios/02-nome.ts` · Teste: `npm run ex -- 02-nome`
 
 - Escreva **primeiro** a assinatura e o contrato em comentário; só então aceite sugestões.
 - **Aceite:** testes verdes **e** você consegue explicar cada linha aceita.

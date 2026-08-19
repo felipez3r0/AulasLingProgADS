@@ -10,7 +10,7 @@
 ## Critério de aceite
 
 ```bash
-npm run ex -- aula01/03
+npm run ex -- 03-boletim
 ```
 
 <!-- Cole aqui a saída esperada: quantos testes devem passar. -->

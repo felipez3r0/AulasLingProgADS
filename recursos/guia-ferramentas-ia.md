@@ -89,7 +89,7 @@ lógica para um módulo separado e ajuste os imports".
 **A técnica que funciona.** Uma especificação com quatro partes:
 
 1. **Objetivo** — o que precisa existir no fim (não como fazer).
-2. **Critério de aceite** — um comando executável: `npm run ex -- aula07/03`.
+2. **Critério de aceite** — um comando executável: `npm run ex -- aula07`.
 3. **Fronteira** — que arquivos ele pode tocar, e quais são intocáveis (os testes).
 4. **Contexto** — que arquivos ele deve ler antes de começar.
 

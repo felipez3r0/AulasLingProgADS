@@ -95,7 +95,7 @@ Durante o semestre inteiro, é a segunda garantia que você vai precisar.
 > funções. Fica difícil de testar e polui a saída. Se você receber uma função que
 > imprime em vez de retornar, esse é o primeiro ajuste a pedir.
 
-**Verifique:** `npm test -- aula01/exemplos/01`
+**Verifique:** `npm test -- 01-primeiro-programa`
 
 ---
 
@@ -140,7 +140,7 @@ it("10% de desconto sobre 100 deve dar 90", () => {
 > *que implementação errada passaria neste teste?* Se você conseguir imaginar uma,
 > o teste é fraco.
 
-**Verifique:** `npm test -- aula01/exemplos/02`
+**Verifique:** `npm test -- 02-o-que-um-teste-prova`
 
 ---
 
@@ -300,7 +300,7 @@ Faça **nesta ordem**. O nível 🚫 constrói o modelo mental que torna 🤝 e 
 > Desligue as sugestões: `Ctrl+Shift+P` → *GitHub Copilot: Disable Completions*.
 
 **1. Corrija a média**
-Arquivo: `exercicios/01-media-corrigida.ts` · Teste: `npm run ex -- aula01/01`
+Arquivo: `exercicios/01-media-corrigida.ts` · Teste: `npm run ex -- 01-media`
 
 - Implemente `calcularMedia` corrigindo o defeito da leitura crítica.
 - Array vazio deve devolver `0`, nunca `NaN`.
@@ -309,7 +309,7 @@ Arquivo: `exercicios/01-media-corrigida.ts` · Teste: `npm run ex -- aula01/01`
 ### 🤝 Com IA assistida — você dirige, ela digita
 
 **2. Conversor de notas em conceitos**
-Arquivo: `exercicios/02-conversor-notas.ts` · Teste: `npm run ex -- aula01/02`
+Arquivo: `exercicios/02-conversor-notas.ts` · Teste: `npm run ex -- 02-conversor`
 
 - O contrato já está escrito em comentário no arquivo. Ligue o Copilot e observe:
   a sugestão nasce restrita pelo que está escrito acima do cursor.

@@ -14,7 +14,7 @@ labels: agente
 <!-- Como o agente (e voce) sabem que terminou. Precisa ser um comando executavel. -->
 
 ```bash
-npm run ex -- aulaNN/NN
+npm run ex -- aulaNN
 ```
 
 ## Arquivos que o agente pode alterar

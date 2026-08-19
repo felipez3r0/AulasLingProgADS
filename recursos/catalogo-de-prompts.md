@@ -125,7 +125,7 @@ Objetivo
 Implementar as funções declaradas em aula07/exercicios/01-inventario.ts.
 
 Critério de aceite
-`npm run ex:run -- aula07/01` verde.
+`npm run ex:run -- aula07` verde.
 
 Pode alterar
 - aula07/exercicios/01-inventario.ts
