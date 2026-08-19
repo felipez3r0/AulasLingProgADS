@@ -1,217 +1,311 @@
-# Aula 15 - Projeto Final: API Completa
+# Aula 15 — Projeto final: da issue ao PR revisado
+
+> **Módulo:** M4 — Agentes, API e projeto
+> **Ementa oficial:** consolidação de E1 a E7
+> **Skills:** S1 a S11 (todas, avaliadas)
+> **Pré-requisitos:** Aulas 01 a 14
 
 ## Objetivo
 
-Aplicar todos os conhecimentos adquiridos ao longo da disciplina na construção de uma **API REST completa**, desde a estrutura de dados até a validação e tratamento de erros.
+Construir uma **API REST completa** operando o fluxo de trabalho real: escrever
+issues com critério de aceite, delegar parte do trabalho a um agente, revisar o PR
+que ele abre, e entregar com CI verde.
+
+O projeto avalia as duas coisas que o curso ensinou: **o que você sabe fazer** e
+**o que você sabe verificar**.
 
 ---
 
-## Descrição do Projeto
+## O que muda em relação a um projeto tradicional
 
-Cada equipe (ou individualmente) deve construir uma **API REST** para um dos temas propostos abaixo, utilizando:
+| Projeto tradicional | Este projeto |
+| --- | --- |
+| "faça sozinho, sem IA" | use IA — e registre como |
+| avalia o código entregue | avalia o código **e** o seu domínio sobre ele |
+| entrega no último dia | histórico de commits mostra o processo |
+| ninguém revisa | pelo menos um PR de agente revisado por você |
 
-- **TypeScript** com tipagem rigorosa
-- **Node.js** com **Express**
-- **Persistência em arquivo JSON**
-- **Validação com Zod**
-- **Tratamento de erros padronizado**
-- **Git** com commits organizados e descritivos
-
----
-
-## Temas Sugeridos
-
-Escolha **um** dos temas abaixo (ou proponha um tema ao professor):
-
-### 1. Sistema de Biblioteca
-- Livros (título, autor, isbn, gênero, disponível)
-- Empréstimos (livroId, nomeAluno, dataEmpréstimo, dataDevolução, status)
-- Regras: livro indisponível não pode ser emprestado; máximo 3 empréstimos por aluno
-
-### 2. Sistema de Pedidos (Lanchonete)
-- Produtos (nome, preço, categoria, disponível)
-- Pedidos (produtos[], cliente, status, total, dataCriação)
-- Regras: calcular total automaticamente; pedido não pode ter produto indisponível
-
-### 3. Sistema de Tarefas (Kanban)
-- Projetos (nome, descrição, dataCriação)
-- Tarefas (projetoId, título, descrição, status: "todo"|"doing"|"done", prioridade, responsável)
-- Regras: tarefa precisa de projeto válido; limitar 5 tarefas "doing" por responsável
-
-### 4. Sistema de Notas (Boletim)
-- Alunos (nome, ra, curso)
-- Disciplinas (nome, cargaHorária, professor)
-- Notas (alunoId, disciplinaId, nota, semestre)
-- Regras: nota entre 0-10; calcular média ponderada por carga horária
+Usar IA não tira ponto. **Não saber explicar o que está no seu repositório, sim.**
 
 ---
 
-## Requisitos Obrigatorios
+## Temas
 
-### Estrutura do Projeto
+Escolha **um**, ou proponha ao professor. Todos exigem dois recursos que se
+relacionam e pelo menos duas regras de negócio.
+
+### 1. Biblioteca
+- **Livros** (título, autor, isbn, gênero, disponível)
+- **Empréstimos** (livroId, aluno, dataEmpréstimo, dataDevolução, status)
+- Regras: livro indisponível não pode ser emprestado; máximo 3 empréstimos ativos por aluno
+
+### 2. Lanchonete
+- **Produtos** (nome, preço, categoria, disponível)
+- **Pedidos** (itens[], cliente, status, total)
+- Regras: total calculado pelo servidor, nunca pelo cliente; pedido não aceita produto indisponível
+
+### 3. Kanban
+- **Projetos** (nome, descrição)
+- **Tarefas** (projetoId, título, status, prioridade, responsável)
+- Regras: tarefa exige projeto existente; máximo 5 tarefas "em andamento" por responsável
+
+### 4. Boletim
+- **Alunos** (nome, ra, curso)
+- **Notas** (alunoId, disciplina, valor, semestre)
+- Regras: nota entre 0 e 10; não pode haver duas notas do mesmo aluno na mesma disciplina e semestre
+
+### 5. Oficina mecânica
+- **Veículos** (placa, modelo, ano, cliente)
+- **Ordens de serviço** (veículoId, descrição, valor, status)
+- Regras: veículo não pode ter duas ordens abertas; ordem finalizada não pode ser alterada
+
+---
+
+## Requisitos
+
+### Funcionalidade
+
+| Requisito | Detalhe |
+| --- | --- |
+| CRUD completo | 2+ recursos, com GET, POST, PUT/PATCH e DELETE |
+| Relacionamento | os recursos se referenciam de verdade |
+| Filtros | 2+ query params, com validação do valor recebido |
+| Regras de negócio | 2+, na camada de **serviço**, não nas rotas |
+| Validação | Zod em toda entrada; tipo derivado do esquema |
+| Erros | middleware centralizado; status corretos; sem vazar stack |
+| Persistência | JSON com escrita atômica; arquivo corrompido não vira lista vazia |
+
+### Qualidade
+
+- Tipagem estrita, **sem `any`**
+- Camadas separadas: rotas · serviço · repositório
+- Nenhuma resposta devolve o objeto do banco cru
+- Nenhum campo definido pelo servidor pode ser sobrescrito pelo cliente
+
+### Verificação
+
+- Testes de endpoint com supertest, cobrindo **casos de borda**, não só o caminho feliz
+- `npm run typecheck` limpo
+- CI configurado e verde
+
+### Git e processo
+
+- Mínimo **15 commits** distribuídos ao longo do desenvolvimento
+- Pelo menos 1 feature branch com PR
+- Pelo menos **1 PR aberto por agente**, revisado por você com comentários linha a linha
+- `.gitignore` com `node_modules`, `dist`, `.env` e os dados gerados
+
+---
+
+## Estrutura sugerida
 
 ```
 projeto-final/
-  data/                     # Arquivos JSON (banco de dados)
+  dados/                  # JSON gerado (ignorado pelo git)
   src/
-    server.ts               # Ponto de entrada
-    routes/                 # Definição de rotas
-    services/               # Lógica de negócio
-    data/                   # Repositórios (leitura/escrita JSON)
-    schemas/                # Schemas Zod
-    middlewares/             # Middlewares customizados
-    errors/                 # Classes de erro
-    models/                 # Interfaces/Types
+    server.ts             # só chama listen
+    app.ts                # criarApp() - sem listen, para os testes
+    rotas/
+    servicos/             # regras de negócio
+    repositorios/         # leitura e escrita
+    esquemas/             # Zod
+    erros/
+  testes/
+  .github/workflows/ci.yml
+  .gitignore
   package.json
   tsconfig.json
-  .gitignore
-  README.md                 # Documentação da API
+  README.md
+  DIARIO-IA.md
 ```
 
-### Funcionalidades
-
-| Requisito | Descrição |
-|-----------|-----------|
-| CRUD completo | Pelo menos 2 recursos com todas as operações (GET, POST, PUT, DELETE) |
-| Validação | Todos os inputs validados com Zod |
-| Tratamento de erros | Middleware centralizado com erros customizados |
-| Persistência | Dados salvos em arquivo JSON |
-| Filtros | Pelo menos 2 query params para filtragem |
-| Relacionamento | Os recursos devem se relacionar (ex: pedido tem produtos) |
-| Regras de negócio | Pelo menos 2 regras na camada de serviços |
-| Middlewares | Logger + pelo menos 1 middleware customizado |
-
-### Git
-
-| Requisito | Descrição |
-|-----------|-----------|
-| Mínimo 10 commits | Commits descritivos e atômicos |
-| Branches | Pelo menos 1 feature branch mergeada na main |
-| .gitignore | node_modules, dist, .env ignorados |
-| README.md | Documentação completa do projeto |
+> `app.ts` separado de `server.ts` é a decisão da Aula 13 que torna o projeto
+> testável. Sem ela, você não consegue escrever testes de endpoint.
 
 ---
 
-## Checklist de Conceitos da Disciplina
+## O fluxo de trabalho exigido
 
-Seu projeto deve demonstrar dominio de:
+### 1. Escreva issues antes de codar
 
-- [ ] Variáveis e constantes com tipagem (Aula 03)
-- [ ] Operadores e expressões (Aula 03)
-- [ ] Condicionais - if/else, switch (Aula 04)
-- [ ] Laços de repetição - for, while (Aula 04)
-- [ ] Funções com parâmetros tipados e retorno (Aula 05)
-- [ ] Arrays e métodos (map, filter, find, reduce) (Aula 06)
-- [ ] Objetos e interfaces (Aula 07)
-- [ ] Union types ou generics (Aula 08)
-- [ ] Módulos - import/export (Aula 09)
-- [ ] Manipulação de arquivos - fs (Aula 10)
-- [ ] Conceitos REST e HTTP (Aula 11)
-- [ ] Express - rotas e parametros (Aula 12)
-- [ ] Middlewares (Aula 13)
-- [ ] Validação e tratamento de erros (Aula 14)
+Use o template [`tarefa-para-agente`](../.github/ISSUE_TEMPLATE/tarefa-para-agente.md).
+Cada issue precisa de: objetivo, critério de aceite executável, arquivos permitidos
+e restrições.
 
----
+**A qualidade do PR é a qualidade da issue.** Uma issue de uma linha produz um PR
+que você não consegue avaliar.
 
-## Documentação da API (README.md do projeto)
+### 2. Trabalhe em branches
 
-O README deve conter:
+Uma branch por funcionalidade. Commits pequenos, mensagens semânticas.
+
+### 3. Delegue pelo menos uma issue a um agente
+
+Copilot Agent no GitHub, ou um agente local abrindo o PR. **Você revisa**:
+
+- leia o diff inteiro;
+- aplique o [checklist](../recursos/checklist-revisao-de-codigo-ia.md);
+- comente linha a linha o que precisa mudar;
+- só faça merge depois de resolvido.
+
+Um PR de agente aprovado sem comentário nenhum é sinal de que a revisão não
+aconteceu — e vale menos que um PR com três ajustes pedidos.
+
+### 4. Escreva o `DIARIO-IA.md`
+
+Uma página, honesta:
 
 ```markdown
-# Nome do Projeto
+# Diário de uso de IA
 
-Descrição breve do que a API faz.
+## Ferramentas usadas
+Copilot inline, Claude Code, Copilot Agent (issue #7)
 
-## Como executar
+## O que a IA fez
+- gerou os esquemas Zod a partir das interfaces
+- implementou o CRUD de empréstimos (PR #12)
+- sugeriu os casos de borda dos testes de nota
 
-1. Clone o repositório
-2. `npm install`
-3. `npm run dev`
-4. Acesse http://localhost:3000
+## O que eu fiz
+- modelei os tipos e as regras de negócio
+- escrevi todos os testes de borda
+- revisei e corrigi o PR #12
 
-## Endpoints
+## Onde ela errou, e como eu percebi
+- O PR #12 usava `.sort()` direto no array do repositório, reordenando
+  os dados em memória. Percebi no `git diff`, antes de rodar: é o defeito
+  da Aula 07 e eu procuro por ele por reflexo agora.
+- Sugeriu instalar `date-fns-ptbr`, que não existe no npm. Conferi com
+  `npm view` antes de instalar (Aula 09).
+- Insistiu duas vezes numa correção de paginação que só mudava o bug de
+  lugar. Parei, escrevi a especificação, e resolvi de uma vez (Aula 11).
 
-### Recurso 1
+## O que eu faria diferente
+...
+```
 
-| Método | Rota | Descrição |
-|--------|------|-----------|
-| GET | /recurso | Listar todos |
-| GET | /recurso/:id | Buscar por ID |
-| POST | /recurso | Criar novo |
-| PUT | /recurso/:id | Atualizar |
-| DELETE | /recurso/:id | Remover |
+**O diário é avaliado, e a honestidade conta a favor.** "A IA errou aqui e eu
+percebi assim" demonstra exatamente a competência que a disciplina ensina.
 
-### Exemplos de requisição
+---
 
-(Incluir exemplos com curl ou JSON para cada endpoint)
+## Autoverificação antes de entregar
 
-## Tecnologias
+Esta aula traz uma ferramenta para você conferir o que dá para conferir sozinho:
 
-- TypeScript
-- Node.js
-- Express
-- Zod
+```typescript
+// aula15-projeto-final/exemplos/verificar-entrega.ts
+import { verificarEntrega } from "./verificar-entrega.js";
+
+const resultado = verificarEntrega({
+  recursosComCrudCompleto: 2,
+  quantidadeDeCommits: 22,
+  arquivosComSegredo: [],
+  // ... preencha honestamente
+});
+
+console.log(resultado.percentualAtendido, resultado.bloqueios);
+```
+
+Rode `npm test -- verificar-entrega` para ver os critérios em ação.
+
+Quatro coisas são **bloqueio**, independentemente do resto: segredo commitado,
+suíte vermelha, typecheck com erro, `DIARIO-IA.md` ausente.
+
+E o checklist manual, que nenhuma ferramenta pega:
+
+```bash
+npm run typecheck                       # limpo
+npm test                                # verde
+git log --oneline | wc -l               # 15 ou mais
+git diff main..sua-branch               # você leu tudo?
+grep -rn "any" src/                     # nenhum
+git log --all --oneline -- .env         # vazio
 ```
 
 ---
 
-## Criterios de Avaliacao
+## Avaliação
+
+Detalhamento completo em [recursos/rubrica-projeto-final.md](../recursos/rubrica-projeto-final.md).
 
 | Critério | Peso |
-|----------|------|
-| Funcionalidade (CRUD funciona corretamente) | 25% |
-| Qualidade do código (tipagem, organização, legibilidade) | 25% |
-| Validação e tratamento de erros | 20% |
-| Uso do Git (commits, branches, .gitignore) | 15% |
-| Documentação (README com endpoints e exemplos) | 15% |
+| --- | --- |
+| Verificação (testes, bordas, CI, typecheck) | **25%** |
+| Funcionalidade (CRUD, relacionamento, filtros, regras) | 20% |
+| Qualidade do código (tipagem, camadas, nomes) | 20% |
+| Domínio e uso de IA (arguição + diário + PR revisado) | **20%** |
+| Uso de Git (commits, branches, PRs) | 15% |
+
+Os dois critérios de maior peso — verificação e domínio — são exatamente o que
+distingue quem trabalha com IA de quem é carregado por ela.
+
+### Arguição individual
+
+Cada integrante responde sobre **qualquer parte** do projeto. Não é pegadinha: é a
+única forma de avaliar o que a disciplina realmente ensinou.
+
+> **Não saber explicar código que está no seu repositório é o resultado que esta
+> disciplina existe para evitar.**
 
 ---
 
-## Cronograma Sugerido
+## Cronograma sugerido
 
 ### Em sala (Aula 15)
-1. Definir tema e escopo
-2. Criar repositório e estrutura do projeto
-3. Definir interfaces e schemas
-4. Implementar repositório de dados (persistência JSON)
-5. Implementar rotas e serviços
-6. Testar todos os endpoints
+1. Escolher tema e definir os dois recursos
+2. Criar repositório, estrutura e CI
+3. Modelar tipos e esquemas Zod
+4. Escrever as issues das funcionalidades
 
-### Em casa (entrega)
-7. Refinar validações e regras de negócio
-8. Adicionar middleware customizado
-9. Escrever documentação
-10. Revisar commits e fazer merge das branches
-
----
-
-## Dica Final: IA como Parceira de Projeto
-
-Ao longo desta disciplina, vocês aprenderam a usar a IA como ferramenta de apoio. No projeto final, usem de forma estratégica:
-
-### Quando usar a IA
-- Para gerar **schemas Zod** a partir das interfaces
-- Para gerar **dados de teste** no JSON
-- Para **debugar erros** que você não consegue resolver
-- Para **revisar código** e sugerir melhorias
-- Para gerar **comandos curl** de teste
-
-### Quando NÃO usar a IA
-- Para gerar o projeto inteiro sem entender o que está acontecendo
-- Para copiar código sem adaptar ao seu contexto
-- Para pular etapas de aprendizado
-
-### Reflexão para carreira
-A IA não substitui o programador - ela **amplifica** suas capacidades. Um dev que entende os fundamentos e usa IA é produtivo e mais eficaz do que:
-- Um dev que não usa IA (mais lento em tarefas repetitivas)
-- Alguém que só usa IA sem entender o código (não sabe debugar, não sabe adaptar)
-
-O diferencial é **entender o que você está fazendo** e usar a IA para ir mais rápido.
+### Em casa
+5. Implementar repositório e serviço, com testes
+6. Implementar rotas e validação
+7. Delegar uma issue ao agente e revisar o PR
+8. Cobrir casos de borda nos testes
+9. Escrever `README.md` e `DIARIO-IA.md`
+10. Rodar a autoverificação e corrigir o que faltar
 
 ---
 
 ## Entrega
 
-- **Repositório no GitHub** (público ou privado com acesso ao professor)
-- **Prazo:** (definido pelo professor)
-- **Apresentação:** breve demonstração da API funcionando (5-10 min por equipe)
+- [ ] Repositório no GitHub com acesso ao professor
+- [ ] CI verde
+- [ ] `README.md` com endpoints e exemplos de requisição
+- [ ] `DIARIO-IA.md` preenchido
+- [ ] Pelo menos 1 PR de agente revisado, com comentários
+- [ ] Apresentação de 5–10 minutos com a API funcionando
+- [ ] Arguição individual
+
+---
+
+## Encerramento: o que você leva daqui
+
+Você aprendeu TypeScript, Express, Zod e testes. Nada disso é o ponto — em três
+anos parte já terá mudado.
+
+O que fica é outra coisa: **você sabe verificar**. Sabe ler um diff e encontrar a
+mudança que não foi anunciada. Sabe rastrear um laço e achar o off-by-one antes de
+rodar. Sabe que `sort` muta, que `catch { return [] }` apaga dados, que 500 para
+erro do cliente causa retentativa infinita, e que o pacote que a IA mandou instalar
+pode não existir.
+
+Sabe, principalmente, transformar um pedido vago numa especificação com critério de
+aceite — e é isso que torna uma tarefa delegável, seja para um agente, seja para um
+colega.
+
+A IA vai continuar melhorando. O que ela não vai fazer é decidir se o problema
+certo está sendo resolvido, saber o que é correto no seu contexto, ou assinar o
+commit. Isso continua sendo seu.
+
+**O commit tem o seu nome.**
+
+---
+
+## Leitura complementar
+
+- [Rubrica completa](../recursos/rubrica-projeto-final.md)
+- [Checklist de revisão de código gerado](../recursos/checklist-revisao-de-codigo-ia.md)
+- [Guia das ferramentas de IA](../recursos/guia-ferramentas-ia.md)
+- [Como entregar](../recursos/como-entregar.md)
