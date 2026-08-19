@@ -33,17 +33,17 @@ uma lista.
 
 | Skill | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | 11 | 12 | 13 | 14 | 15 |
 | --- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| S1 Especificar intenção | | | **I** | | R | | | R | | | | R | R | R | A |
-| S2 Ler código | | **I** | R | | R | | R | | R | | R | R | | R | A |
-| S3 Verificar | R | | **I** | R | R | R | R | R | R | R | R | R | R | R | A |
-| S4 Rastrear execução | | | R | | **I** | | R | | | | R | | | | A |
-| S5 Depurar por hipótese | | | | | R | | | | | R | **I** | R | R | R | A |
-| S6 Decompor | | | R | | | **I** | | R | | | | R | R | R | A |
-| S7 Tipos como contrato | | | | **I** | | R | R | R | | R | | | R | R | A |
-| S8 Git como rede | **I** | R | R | R | R | R | R | R | R | R | R | R | | R | A |
-| S9 Contexto do agente | | | | | | | | | R | | | **I** | R | R | A |
-| S10 Ceticismo calibrado | R | | | | | | | | **I** | R | R | R | | R | A |
-| S11 Revisar código alheio | | R | | | | | R | | | | | **I** | | R | A |
+| S1 Especificar intenção | | | **I** | | | R | | R | | | | | | | A |
+| S2 Ler código | | **I** | | | R | | R | | | | | | | | A |
+| S3 Verificar | **I** | | R | R | | | | | | R | | | R | | A |
+| S4 Rastrear execução | | | | | **I** | | R | | | | R | | | | A |
+| S5 Depurar por hipótese | | | | | | | | | | | **I** | | | R | A |
+| S6 Decompor | | | **I** | | | R | | | | | | R | R | | A |
+| S7 Tipos como contrato | | | | **I** | | | | R | | R | | | | R | A |
+| S8 Git como rede | **I** | R | | | | | | | | | | | | | A |
+| S9 Contexto do agente | | | | | | | | | **I** | | | R | | | A |
+| S10 Ceticismo calibrado | **I** | | | | | | | | R | | | | | R | A |
+| S11 Revisar código alheio | | **I** | | | | | | | | | | R | | | A |
 
 Convenções que sustentam a espiral:
 

@@ -77,7 +77,7 @@ você não entendeu nada — só o 🚫 te dá esse retorno.
 | # | Tema | Ementa | Skills |
 | --- | --- | --- | --- |
 | 09 | [Módulos, bibliotecas e segurança de dependências](aula09-modulos-e-bibliotecas/) | E5 | S10, S9 |
-| 10 | [Manipulação de arquivos e dados](aula10-arquivos-e-dados/) | E7 | S3, S5 |
+| 10 | [Manipulação de arquivos e dados](aula10-arquivos-e-dados/) | E7 | S3, S7 |
 | 11 | [Depuração por hipótese: quando a IA erra e insiste](aula11-depuracao/) | — | S5, S4 |
 
 ### Módulo 4 — Agentes, API e projeto
@@ -86,7 +86,7 @@ você não entendeu nada — só o 🚫 te dá esse retorno.
 | --- | --- | --- |
 | 12 | [Agentes de codificação: especificar, delegar, revisar](aula12-agentes-de-codificacao/) | S9, S11, S6 |
 | 13 | [HTTP, REST e Express](aula13-http-rest-e-express/) | S6, S3 |
-| 14 | [CRUD, validação e tratamento de erros](aula14-crud-validacao-e-erros/) | S7, S10 |
+| 14 | [CRUD, validação e tratamento de erros](aula14-crud-validacao-e-erros/) | S7, S10, S5 |
 | 15 | [Projeto final: da issue ao PR revisado](aula15-projeto-final/) | todas |
 
 ---
