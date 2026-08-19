@@ -16,7 +16,7 @@
  */
 
 import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
-import { join, dirname, resolve, relative } from "node:path";
+import { join, dirname, resolve, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -158,9 +158,16 @@ function verificarAula(aula) {
   if (!existsSync(dirExemplos)) {
     erros.push(`${aula}: falta a pasta exemplos/`);
   } else {
+    // Todo exemplo apresentado na aula precisa de teste. Modulos de apoio em
+    // subpastas (ex: exemplos/loja/) sao exercitados pelo teste do exemplo que
+    // os importa, entao nao exigimos um .spec.ts para cada um deles.
+    // Excecao: leitura-critica/ e conteudo da aula e precisa de teste proprio.
     for (const arq of arquivosTs(dirExemplos)) {
       if (arq.endsWith(".spec.ts")) continue;
       if (arq.includes("mini-projeto")) continue;
+      const emSubpasta = dirname(arq) !== dirExemplos;
+      const emLeituraCritica = arq.includes(`${sep}leitura-critica${sep}`);
+      if (emSubpasta && !emLeituraCritica) continue;
       const irmao = arq.replace(/\.ts$/, ".spec.ts");
       if (!existsSync(irmao)) {
         erros.push(`${relative(RAIZ, arq)}: exemplo sem teste irmao (.spec.ts)`);

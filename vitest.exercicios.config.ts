@@ -14,5 +14,9 @@ export default defineConfig({
     include: ["aula*/exercicios/**/*.test.ts"],
     environment: "node",
     passWithNoTests: true,
+    // Fuso fixo: o curso e brasileiro e varias aulas dependem de data.
+    // Sem isto, um teste passaria na maquina do aluno (UTC-3) e falharia
+    // no CI (UTC) - exatamente o tipo de bug que a aula 09 ensina a achar.
+    env: { TZ: "America/Sao_Paulo" },
   },
 });
