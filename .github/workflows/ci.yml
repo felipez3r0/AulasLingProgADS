@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  verificacao:
+    name: Tipos, exemplos e estrutura
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Checagem de tipos
+        run: npm run typecheck
+
+      - name: Testes dos exemplos (devem passar)
+        run: npm test
+
+      - name: Estrutura das aulas e cobertura da ementa
+        run: npm run estrutura
+
+  exercicios-devem-falhar:
+    name: Exercicios continuam sem resposta
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Os exercicios sao publicados VERMELHOS de proposito: eles sao o enunciado.
+      # Se esta suite passar no repositorio do curso, alguem commitou o gabarito.
+      - name: Confirmar que os exercicios ainda falham
+        run: |
+          if npm run ex:run --silent; then
+            echo "::error::A suite de exercicios passou. Alguma solucao foi commitada no repositorio publico."
+            exit 1
+          else
+            echo "Ok: os exercicios continuam falhando, como esperado."
+          fi

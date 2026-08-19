@@ -1,0 +1,40 @@
+{
+  "name": "aulas-ling-prog-ads",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Linguagem de Programação - ADS/FATEC - curso com foco em desenvolvimento assistido por IA",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "ex": "vitest --config vitest.exercicios.config.ts",
+    "ex:run": "vitest run --config vitest.exercicios.config.ts",
+    "typecheck": "tsc --noEmit",
+    "estrutura": "node scripts/verificar-estrutura-aulas.mjs",
+    "check": "npm run typecheck && npm run test && npm run estrutura"
+  },
+  "keywords": [
+    "fatec",
+    "ads",
+    "typescript",
+    "ensino",
+    "ia"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.20.1",
+    "@types/supertest": "^6.0.3",
+    "supertest": "^7.2.2",
+    "tsx": "^4.23.12",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "zod": "^3.25.76"
+  }
+}

@@ -1,0 +1,31 @@
+# Dependencias
+node_modules/
+
+# Build
+dist/
+build/
+*.tsbuildinfo
+
+# Variaveis de ambiente e segredos - NUNCA commite estes arquivos (aula 09)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dados gerados em tempo de execucao (aula 10)
+dados/*.json
+!dados/exemplo.json
+tmp/
+*.log
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Editor (mantemos .vscode/ versionado de proposito - ver .vscode/README)
+.idea/
+*.swp
+
+# Cobertura de testes
+coverage/

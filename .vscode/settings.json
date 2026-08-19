@@ -1,0 +1,14 @@
+{
+  "editor.formatOnSave": true,
+  "files.eol": "\n",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "// Copilot": "Nos exercicios de nivel sem-IA, desligue as sugestoes em Ctrl+Shift+P > 'GitHub Copilot: Disable Completions'",
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": true
+  }
+}

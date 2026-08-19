@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "lib": ["ES2023"],
+    "types": ["node"],
+
+    /* Rigor: o compilador e o primeiro revisor do codigo que a IA escreve.
+       As flags abaixo nao sao preferencia de estilo - cada uma e conteudo de aula. */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "verbatimModuleSyntax": true,
+
+    "noEmit": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["aula*/**/*.ts", "*.config.ts"],
+  "exclude": ["node_modules", "**/mini-projeto/**"]
+}
