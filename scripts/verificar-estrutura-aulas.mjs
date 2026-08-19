@@ -178,8 +178,12 @@ function verificarAula(aula) {
   if (!existsSync(dirExercicios)) {
     if (!ISENTAS_DO_TEMPLATE.has(aula)) erros.push(`${aula}: falta a pasta exercicios/`);
   } else {
+    // Mesma logica dos exemplos: modulos de apoio em subpastas (ex:
+    // exercicios/relatorio/) sao exercitados pelo teste do exercicio que os
+    // reune, entao nao exigimos um .test.ts para cada um.
     for (const arq of arquivosTs(dirExercicios)) {
       if (arq.endsWith(".test.ts")) continue;
+      if (dirname(arq) !== dirExercicios) continue;
       const irmao = arq.replace(/\.ts$/, ".test.ts");
       if (!existsSync(irmao)) {
         erros.push(`${relative(RAIZ, arq)}: exercicio sem teste irmao (.test.ts)`);
