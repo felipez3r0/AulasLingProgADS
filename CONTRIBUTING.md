@@ -14,27 +14,6 @@ Instruções para quem for reescrever ou manter as pastas de aula deste reposit�
 6. Exercícios para casa, com modo de IA indicado por exercício
 7. Critério de entrega (o que deve estar no commit)
 
-## O que foi removido do material original (v1)
-
-- Seções "Dica: usando IA" no rodapé de cada aula. O uso de IA passa a ser parte das atividades, não um apêndice.
-- Reexplicações de conceitos vistos em C (variáveis, operadores, `if`, laços, funções) além do necessário para o mapeamento de sintaxe.
-- As antigas aulas 12–14 de Express passo a passo. O conteúdo migrou para as aulas 08–11 no formato contrato → geração → revisão.
-- Persistência em JSON como solução final: fica só na aula 07 como exercício de arquivos; o projeto usa SQLite.
-
-## O que foi adicionado
-
-- Aula 01: prova diagnóstica (ler C, prever saída, 30 min, sem IA).
-- Aula 06: testes com **Vitest** — esta é a decisão de tooling do curso; o README-alvo original citava `node:test` como padrão de "não introduzir framework externo", mas o curso adotou Vitest deliberadamente (ver histórico de decisões abaixo).
-- Aula 07: assincronia como conteúdo próprio, antes de qualquer código de servidor.
-- Aula 10: SQLite com `@libsql/client` (não `better-sqlite3` nem `node:sqlite`, para que o mesmo código rode local e no Turso); padrão repository; aluno revisa SQL gerado (injeção, parâmetros, tipos).
-- Aula 14: roteiro de deploy no Render (free) com banco no Turso (free); variáveis de ambiente; explicar cold start do plano gratuito.
-- Pastas `prova1/` e `prova2-defesas/`: banco de questões no formato "prever saída / achar bug / explicar" e roteiro da defesa amostrada. **Os arquivos reais de questões e gabaritos não são commitados** — cada uma dessas pastas tem seu próprio `.gitignore` cobrindo `banco-questoes.md`, `gabarito*.md` (e `roteiro-defesa*.md` em prova2-defesas). Mantenha esses arquivos apenas localmente.
-- Aula 11: conjunto de servidores Express com defeitos plantados (validação ausente, erro engolido, middleware fora de ordem, referência compartilhada indevida).
-- Aula 12: rubrica de code review para os alunos.
-- Projeto: template de `DECISOES.md`, do contrato de API e da divisão de responsabilidades; alinhar com os professores de Engenharia de Software e Programação Web o calendário de entregas.
-
-**Mantido:** TypeScript + Node + Express como stack; Git em toda aula; Zod na validação (como algo que o aluno lê e ajusta, não escreve do zero); SQLite como banco.
-
 ---
 
 ## Convenções de tooling
@@ -70,7 +49,3 @@ As aulas 09, 10, 11 e 13-14 são as que mais dependem de geração de código vi
 - Ou indicar um assistente alternativo com cota disponível (ex.: outro provedor com free tier).
 
 Registrar a decisão tomada na própria aula afetada, para não haver ambiguidade sobre o modo de IA vigente naquele encontro.
-
-## Histórico desta reescrita
-
-A reescrita seguiu um plano de execução faseado (Fase 0: esqueleto e infraestrutura; Fases 1–4: conteúdo final por bloco, um bloco por vez). Toda a reestruturação aconteceu na branch `reescrita-curso-ia`, criada a partir de `main` — o merge para `main` é decisão posterior, tomada só depois do material estar pronto. Existe uma branch anterior não relacionada (`claude/reescrever-curso-ia-dev-f21iay`) com outra tentativa de reescrita — foi deliberadamente ignorada por divergir da direção adotada aqui (ela usava Vitest também, mas sem SQLite e com estrutura de aulas diferente da deste plano).
