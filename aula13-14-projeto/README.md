@@ -1,217 +1,57 @@
-# Aula 15 - Projeto Final: API Completa
+# Aula 13 - Projeto: Contrato Alinhado com o Front → Testes → Implementação Assistida
 
-## Objetivo
+**Modo de IA: Par**
 
-Aplicar todos os conhecimentos adquiridos ao longo da disciplina na construção de uma **API REST completa**, desde a estrutura de dados até a validação e tratamento de erros.
+## Objetivos da aula
 
----
+- Alinhar o contrato da API do grupo com quem faz o front (Programação Web), antes de escrever qualquer rota.
+- Aplicar, no projeto real, o fluxo praticado nas aulas 06-11: contrato → teste → implementação assistida → revisão.
+- Deixar o backend do grupo rodando localmente, com pelo menos um recurso completo (CRUD) e persistência em SQLite.
 
-## Descrição do Projeto
+## Leitura prévia (antes da aula)
 
-Cada equipe (ou individualmente) deve construir uma **API REST** para um dos temas propostos abaixo, utilizando:
-
-- **TypeScript** com tipagem rigorosa
-- **Node.js** com **Express**
-- **Persistência em arquivo JSON**
-- **Validação com Zod**
-- **Tratamento de erros padronizado**
-- **Git** com commits organizados e descritivos
+- Releia [`recursos/template-contrato-api.md`](../recursos/template-contrato-api.md), [`recursos/rubrica-code-review.md`](../recursos/rubrica-code-review.md) e [`recursos/template-decisoes.md`](../recursos/template-decisoes.md) — os três são usados nesta aula e na 14.
+- Se o grupo já tem o tema definido (via Engenharia de Software), traga-o pronto.
 
 ---
 
-## Temas Sugeridos
+## O projeto
 
-Escolha **um** dos temas abaixo (ou proponha um tema ao professor):
+Descrito em detalhe no [README raiz](../README.md#projeto-final-integrador): backend REST em TypeScript + Express, avaliado nesta disciplina, mas que precisa ser o backend real que o front do grupo (Programação Web) consome. Entregáveis obrigatórios: contrato escrito antes do código, testes com Vitest, validação (Zod), tratamento de erros, persistência em SQLite via `@libsql/client`, API publicada, histórico Git com commits de todos os integrantes e ao menos um PR revisado, `DECISOES.md`, divisão de responsabilidades declarada.
 
-### 1. Sistema de Biblioteca
-- Livros (título, autor, isbn, gênero, disponível)
-- Empréstimos (livroId, nomeAluno, dataEmpréstimo, dataDevolução, status)
-- Regras: livro indisponível não pode ser emprestado; máximo 3 empréstimos por aluno
+### Passo a passo desta aula
 
-### 2. Sistema de Pedidos (Lanchonete)
-- Produtos (nome, preço, categoria, disponível)
-- Pedidos (produtos[], cliente, status, total, dataCriação)
-- Regras: calcular total automaticamente; pedido não pode ter produto indisponível
+1. **Copie o template**: `aula13-14-projeto/projeto-base/` para o repositório do próprio grupo (não desenvolvam dentro deste repositório de aulas — ver `projeto-base/README.md`).
+2. **Escreva o contrato** do primeiro recurso do tema, alinhado com quem faz o front — use `recursos/template-contrato-api.md`. Se o front já tem uma tela que consome esse recurso, o contrato precisa bater com o que ela espera.
+3. **Escreva os testes** do recurso a partir do contrato (mesmo padrão de `projeto-base/test/app.test.ts`).
+4. **Peça a implementação** a um agente de IA, colando contrato + testes — não uma descrição solta.
+5. **Revise antes de aceitar**: status codes batem com o contrato? SQL usa parâmetros? validação cobre os campos obrigatórios do contrato?
+6. **Registre em `DECISOES.md`** o que foi pedido, aceito/rejeitado/ajustado e por quê (template em `recursos/template-decisoes.md`).
 
-### 3. Sistema de Tarefas (Kanban)
-- Projetos (nome, descrição, dataCriação)
-- Tarefas (projetoId, título, descrição, status: "todo"|"doing"|"done", prioridade, responsável)
-- Regras: tarefa precisa de projeto válido; limitar 5 tarefas "doing" por responsável
+### Divisão de responsabilidades
 
-### 4. Sistema de Notas (Boletim)
-- Alunos (nome, ra, curso)
-- Disciplinas (nome, cargaHorária, professor)
-- Notas (alunoId, disciplinaId, nota, semestre)
-- Regras: nota entre 0-10; calcular média ponderada por carga horária
+O grupo **não deve** dividir "quem faz o quê" por pessoa fixa desde o início — todos passam pelo backend, em partes diferentes (ex.: uma pessoa no recurso A, outra no B, revezando). Declare a divisão real (quem fez o quê) no README do projeto do grupo; a defesa amostrada (P2) é individual e qualquer integrante pode ser sorteado para explicar qualquer parte.
 
 ---
 
-## Requisitos Obrigatorios
+## Atividades em sala
 
-### Estrutura do Projeto
+1. **Alinhamento com o front:** cada grupo confirma com quem faz o front os nomes de campos e formatos de erro do primeiro contrato, ajustando antes de codar.
+2. **Implementação assistida guiada:** cada integrante implementa pelo menos um endpoint do recurso escolhido, seguindo o fluxo de 6 passos acima, com o professor circulando.
 
-```
-projeto-final/
-  data/                     # Arquivos JSON (banco de dados)
-  src/
-    server.ts               # Ponto de entrada
-    routes/                 # Definição de rotas
-    services/               # Lógica de negócio
-    data/                   # Repositórios (leitura/escrita JSON)
-    schemas/                # Schemas Zod
-    middlewares/             # Middlewares customizados
-    errors/                 # Classes de erro
-    models/                 # Interfaces/Types
-  package.json
-  tsconfig.json
-  .gitignore
-  README.md                 # Documentação da API
-```
+## Exercícios para casa
 
-### Funcionalidades
+- **Exercício 1 (Par):** complete o CRUD do primeiro recurso (mínimo: GET lista, GET por id, POST, DELETE — PUT se o tema exigir atualização).
+- **Exercício 2 (Par):** adicione pelo menos uma regra de negócio própria do tema (ex.: "livro indisponível não pode ser emprestado") na camada de repository/serviço, com teste cobrindo o caso que a regra bloqueia.
+- **Exercício 3 (Sem IA):** escreva a seção "Como executar" e "Endpoints" do README do projeto do grupo, sozinho, a partir do contrato — é a documentação que quem faz o front vai usar.
 
-| Requisito | Descrição |
-|-----------|-----------|
-| CRUD completo | Pelo menos 2 recursos com todas as operações (GET, POST, PUT, DELETE) |
-| Validação | Todos os inputs validados com Zod |
-| Tratamento de erros | Middleware centralizado com erros customizados |
-| Persistência | Dados salvos em arquivo JSON |
-| Filtros | Pelo menos 2 query params para filtragem |
-| Relacionamento | Os recursos devem se relacionar (ex: pedido tem produtos) |
-| Regras de negócio | Pelo menos 2 regras na camada de serviços |
-| Middlewares | Logger + pelo menos 1 middleware customizado |
+## Critério de entrega (desta aula)
 
-### Git
-
-| Requisito | Descrição |
-|-----------|-----------|
-| Mínimo 10 commits | Commits descritivos e atômicos |
-| Branches | Pelo menos 1 feature branch mergeada na main |
-| .gitignore | node_modules, dist, .env ignorados |
-| README.md | Documentação completa do projeto |
+- Repositório do grupo criado, com o `projeto-base` copiado e adaptado ao tema.
+- `DECISOES.md` com pelo menos uma entrada real (não vazio).
+- Pelo menos um endpoint completo, testado, rodando localmente contra SQLite (`file:` local).
+- Cada integrante com pelo menos um commit no backend até o fim desta aula.
 
 ---
 
-## Checklist de Conceitos da Disciplina
-
-Seu projeto deve demonstrar dominio de:
-
-- [ ] Variáveis e constantes com tipagem (Aula 03)
-- [ ] Operadores e expressões (Aula 03)
-- [ ] Condicionais - if/else, switch (Aula 04)
-- [ ] Laços de repetição - for, while (Aula 04)
-- [ ] Funções com parâmetros tipados e retorno (Aula 05)
-- [ ] Arrays e métodos (map, filter, find, reduce) (Aula 06)
-- [ ] Objetos e interfaces (Aula 07)
-- [ ] Union types ou generics (Aula 08)
-- [ ] Módulos - import/export (Aula 09)
-- [ ] Manipulação de arquivos - fs (Aula 10)
-- [ ] Conceitos REST e HTTP (Aula 11)
-- [ ] Express - rotas e parametros (Aula 12)
-- [ ] Middlewares (Aula 13)
-- [ ] Validação e tratamento de erros (Aula 14)
-
----
-
-## Documentação da API (README.md do projeto)
-
-O README deve conter:
-
-```markdown
-# Nome do Projeto
-
-Descrição breve do que a API faz.
-
-## Como executar
-
-1. Clone o repositório
-2. `npm install`
-3. `npm run dev`
-4. Acesse http://localhost:3000
-
-## Endpoints
-
-### Recurso 1
-
-| Método | Rota | Descrição |
-|--------|------|-----------|
-| GET | /recurso | Listar todos |
-| GET | /recurso/:id | Buscar por ID |
-| POST | /recurso | Criar novo |
-| PUT | /recurso/:id | Atualizar |
-| DELETE | /recurso/:id | Remover |
-
-### Exemplos de requisição
-
-(Incluir exemplos com curl ou JSON para cada endpoint)
-
-## Tecnologias
-
-- TypeScript
-- Node.js
-- Express
-- Zod
-```
-
----
-
-## Criterios de Avaliacao
-
-| Critério | Peso |
-|----------|------|
-| Funcionalidade (CRUD funciona corretamente) | 25% |
-| Qualidade do código (tipagem, organização, legibilidade) | 25% |
-| Validação e tratamento de erros | 20% |
-| Uso do Git (commits, branches, .gitignore) | 15% |
-| Documentação (README com endpoints e exemplos) | 15% |
-
----
-
-## Cronograma Sugerido
-
-### Em sala (Aula 15)
-1. Definir tema e escopo
-2. Criar repositório e estrutura do projeto
-3. Definir interfaces e schemas
-4. Implementar repositório de dados (persistência JSON)
-5. Implementar rotas e serviços
-6. Testar todos os endpoints
-
-### Em casa (entrega)
-7. Refinar validações e regras de negócio
-8. Adicionar middleware customizado
-9. Escrever documentação
-10. Revisar commits e fazer merge das branches
-
----
-
-## Dica Final: IA como Parceira de Projeto
-
-Ao longo desta disciplina, vocês aprenderam a usar a IA como ferramenta de apoio. No projeto final, usem de forma estratégica:
-
-### Quando usar a IA
-- Para gerar **schemas Zod** a partir das interfaces
-- Para gerar **dados de teste** no JSON
-- Para **debugar erros** que você não consegue resolver
-- Para **revisar código** e sugerir melhorias
-- Para gerar **comandos curl** de teste
-
-### Quando NÃO usar a IA
-- Para gerar o projeto inteiro sem entender o que está acontecendo
-- Para copiar código sem adaptar ao seu contexto
-- Para pular etapas de aprendizado
-
-### Reflexão para carreira
-A IA não substitui o programador - ela **amplifica** suas capacidades. Um dev que entende os fundamentos e usa IA é produtivo e mais eficaz do que:
-- Um dev que não usa IA (mais lento em tarefas repetitivas)
-- Alguém que só usa IA sem entender o código (não sabe debugar, não sabe adaptar)
-
-O diferencial é **entender o que você está fazendo** e usar a IA para ir mais rápido.
-
----
-
-## Entrega
-
-- **Repositório no GitHub** (público ou privado com acesso ao professor)
-- **Prazo:** (definido pelo professor)
-- **Apresentação:** breve demonstração da API funcionando (5-10 min por equipe)
+Conteúdo da aula14 (revisão cruzada entre grupos + deploy): [aula14-revisao-deploy.md](aula14-revisao-deploy.md).
