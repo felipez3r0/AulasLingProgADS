@@ -4,7 +4,7 @@
 
 ## Objetivo
 
-Medir a base real de C da turma antes do Bloco 1 (sala invertida, ritmo acelerado). Não vale nota — o resultado decide se o Bloco 1 precisa de um encontro extra (retirado da aula 15, conforme o [README raiz](../../README.md)).
+Medir a base real de C da turma antes do Bloco 1 (sala invertida, ritmo acelerado). O resultado decide se o Bloco 1 precisa de um encontro extra, retirado da aula 15, conforme o [README raiz](../../README.md).
 
 ## Formato
 
@@ -17,7 +17,7 @@ Sem compilar, sem IA, sem consulta a material.
 
 ## Correção
 
-Não é aprovado/reprovado — é um termômetro. Um critério simples: **menos de 60% de acerto na turma** dispara o ajuste do encontro extra citado no README raiz.
+Serve para medir a turma, não para dar nota. Um critério simples: menos de 60% de acerto na turma dispara o ajuste do encontro extra citado no README raiz.
 
 ## Banco de questões
 

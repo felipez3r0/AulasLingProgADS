@@ -30,9 +30,9 @@ Uma entrada por decisão relevante, não uma por prompt. Não precisa registrar 
 verificava se o livro já estava emprestado (regra de negócio do nosso
 tema) — adicionei essa checagem manualmente antes do insert.
 
-**Motivo:** o teste que escrevi não cobria esse caso de borda, então a
-IA não tinha como saber que a regra existia. Reforça por que os testes
-precisam cobrir as regras de negócio, não só o esqueleto do contrato.
+**Motivo:** o teste que escrevi não cobria esse caso de borda, e o
+prompt não continha essa regra. Os testes precisam cobrir as regras
+de negócio, não só o esqueleto do contrato.
 ```
 
 ```markdown

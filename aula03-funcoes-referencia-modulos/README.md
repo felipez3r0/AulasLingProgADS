@@ -11,7 +11,7 @@
 
 ## Leitura prévia (antes da aula)
 
-Leia este README. Você já sabe o que é uma função e por que existe escopo — o foco aqui é a sintaxe do TypeScript e um ponto que C deixa explícito com `*` e que em TypeScript é implícito: **quando você está mexendo no original e quando está mexendo numa cópia**.
+Leia este README. Funções e escopo você já conhece de C. A parte nova é a sintaxe do TypeScript e um ponto que C deixa explícito com `*` e aqui é implícito: quando você está mexendo no original e quando está mexendo numa cópia.
 
 ---
 

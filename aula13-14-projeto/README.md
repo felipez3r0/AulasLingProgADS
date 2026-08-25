@@ -22,28 +22,28 @@ Descrito em detalhe no [README raiz](../README.md#projeto-final-integrador): bac
 ### Passo a passo desta aula
 
 1. **Copie o template**: `aula13-14-projeto/projeto-base/` para o repositório do próprio grupo (não desenvolvam dentro deste repositório de aulas — ver `projeto-base/README.md`).
-2. **Escreva o contrato** do primeiro recurso do tema, alinhado com quem faz o front — use `recursos/template-contrato-api.md`. Se o front já tem uma tela que consome esse recurso, o contrato precisa bater com o que ela espera.
+2. **Escreva o contrato** do primeiro recurso do tema, alinhado com quem faz o front, usando `recursos/template-contrato-api.md`. Se o front já tem uma tela que consome esse recurso, o contrato precisa bater com o que ela espera.
 3. **Escreva os testes** do recurso a partir do contrato (mesmo padrão de `projeto-base/test/app.test.ts`).
-4. **Peça a implementação** a um agente de IA, colando contrato + testes — não uma descrição solta.
-5. **Revise antes de aceitar**: status codes batem com o contrato? SQL usa parâmetros? validação cobre os campos obrigatórios do contrato?
+4. **Peça a implementação** a um agente de IA, colando contrato + testes no prompt.
+5. **Revise antes de aceitar**, com o checklist da aula09 mais as perguntas próprias do projeto: o SQL usa parâmetros? A regra de negócio do tema está na camada certa (repository/serviço), ou ficou esquecida na rota?
 6. **Registre em `DECISOES.md`** o que foi pedido, aceito/rejeitado/ajustado e por quê (template em `recursos/template-decisoes.md`).
 
 ### Divisão de responsabilidades
 
-O grupo **não deve** dividir "quem faz o quê" por pessoa fixa desde o início — todos passam pelo backend, em partes diferentes (ex.: uma pessoa no recurso A, outra no B, revezando). Declare a divisão real (quem fez o quê) no README do projeto do grupo; a defesa amostrada (P2) é individual e qualquer integrante pode ser sorteado para explicar qualquer parte.
+O grupo não deve dividir "quem faz o quê" por pessoa fixa desde o início: todos passam pelo backend, em partes diferentes (ex.: uma pessoa no recurso A, outra no B, revezando). Declare a divisão real (quem fez o quê) no README do projeto do grupo; a defesa amostrada (P2) é individual e qualquer integrante pode ser sorteado para explicar qualquer parte.
 
 ---
 
 ## Atividades em sala
 
 1. **Alinhamento com o front:** cada grupo confirma com quem faz o front os nomes de campos e formatos de erro do primeiro contrato, ajustando antes de codar.
-2. **Implementação assistida guiada:** cada integrante implementa pelo menos um endpoint do recurso escolhido, seguindo o fluxo de 6 passos acima, com o professor circulando.
+2. **Implementação assistida guiada:** cada integrante implementa pelo menos um endpoint do recurso escolhido, com o professor conferindo por amostragem se o registrado no `DECISOES.md` bate com o código aceito.
 
 ## Exercícios para casa
 
-- **Exercício 1 (Par):** complete o CRUD do primeiro recurso (mínimo: GET lista, GET por id, POST, DELETE — PUT se o tema exigir atualização).
+- **Exercício 1 (Par):** complete o CRUD do primeiro recurso (mínimo: GET lista, GET por id, POST, DELETE; PUT se o tema exigir atualização).
 - **Exercício 2 (Par):** adicione pelo menos uma regra de negócio própria do tema (ex.: "livro indisponível não pode ser emprestado") na camada de repository/serviço, com teste cobrindo o caso que a regra bloqueia.
-- **Exercício 3 (Sem IA):** escreva a seção "Como executar" e "Endpoints" do README do projeto do grupo, sozinho, a partir do contrato — é a documentação que quem faz o front vai usar.
+- **Exercício 3 (Sem IA):** escreva as seções "Como executar" e "Endpoints" do README do projeto a partir do contrato. É a documentação que quem faz o front vai usar.
 
 ## Critério de entrega (desta aula)
 

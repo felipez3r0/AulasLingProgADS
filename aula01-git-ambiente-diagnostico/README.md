@@ -122,12 +122,11 @@ Crie este arquivo **antes** de adicionar os arquivos ao Git.
 
 ## Exercícios para casa
 
-- **Exercício 1 (Sem IA) — Repositório pessoal:** crie uma pasta `exercicios-git`, inicialize um repositório, crie `sobre-mim.txt` com seu nome e curso, commit, crie o repositório no GitHub e faça o push.
-- **Exercício 2 (Sem IA) — Múltiplos commits:** no mesmo repositório, crie `linguagens.txt` e adicione 3 linguagens que você conhece, **um commit por linguagem**. Confira o histórico com `git log --oneline`.
-- **Exercício 3 (Tutor — pode perguntar o que um comando faz, não pedir a solução pronta):** crie `segredo.txt` com uma senha fictícia, crie um `.gitignore` que o ignore, confirme com `git status` que ele não aparece, e faça commit + push do restante.
+- **Exercício 1 (Sem IA) — Repositório pessoal:** crie uma pasta `exercicios-git`, inicialize um repositório, crie `sobre-mim.txt` com seu nome e curso, faça o primeiro commit e o push para um repositório novo no GitHub. Depois crie `linguagens.txt` e adicione 3 linguagens que você conhece, um commit por linguagem. Confira o histórico com `git log --oneline`.
+- **Exercício 2 (Tutor — pode perguntar o que um comando faz, não pedir a solução pronta):** crie `segredo.txt` com uma senha fictícia, crie um `.gitignore` que o ignore, confirme com `git status` que ele não aparece, e faça commit + push do restante.
 
 ## Critério de entrega
 
 - Prova diagnóstica resolvida (entregue conforme instrução do professor).
-- Repositório no GitHub com pelo menos 4 commits (um por exercício + o inicial), mensagens seguindo a convenção do imperativo.
-- `.gitignore` funcionando (o Exercício 3 é verificado checando que `segredo.txt` não está no histórico).
+- Repositório no GitHub com pelo menos 5 commits (inicial + sobre-mim + um por linguagem + gitignore), mensagens seguindo a convenção do imperativo.
+- `.gitignore` funcionando (o Exercício 2 é verificado checando que `segredo.txt` não está no histórico).

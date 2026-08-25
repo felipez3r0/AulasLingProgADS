@@ -80,7 +80,7 @@ let aprovado: boolean = true;
 
 ### Operadores e expressões
 
-Os operadores aritméticos, de comparação e lógicos são **os mesmos de C** (`+ - * / % ** ; > < >= <= && || ! ++ --`), com duas diferenças importantes:
+Os operadores aritméticos, de comparação e lógicos são os mesmos de C (`+ - * / % ** ; > < >= <= && || ! ++ --`), com duas diferenças importantes:
 
 ```typescript
 console.log(10 / 3);              // 3.333... (em C, 10/3 = 3 — divisão inteira)
@@ -115,7 +115,7 @@ if (nota >= 6) {
 }
 ```
 
-`switch` funciona como em C — **cuidado com `break`**, o fall-through é o mesmo comportamento perigoso:
+`switch` funciona como em C. Cuidado com `break`: o fall-through é o mesmo comportamento perigoso:
 
 ```typescript
 switch (diaSemana) {
@@ -141,7 +141,7 @@ while (contador < 5) { contador++; }
 do { console.log("roda pelo menos 1x"); } while (false);
 ```
 
-`break` e `continue` funcionam como em C. Um recurso que **não existe em C**: `for...of`, para iterar direto sobre os valores de um array/string sem gerenciar índice:
+`break` e `continue` funcionam como em C. Um recurso que não existe em C: `for...of`, para iterar direto sobre os valores de um array/string sem gerenciar índice:
 
 ```typescript
 for (const letra of "FATEC") { console.log(letra); }

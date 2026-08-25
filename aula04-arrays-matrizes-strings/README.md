@@ -11,7 +11,7 @@
 
 ## Leitura prévia (antes da aula)
 
-Leia este README. Você já sabe o que é um vetor e uma matriz de C — o foco aqui é: arrays em TypeScript são dinâmicos (não têm tamanho fixo), e existe um conjunto de métodos prontos que substitui boa parte dos laços manuais que você escrevia em C.
+Leia este README. Duas coisas mudam em relação aos vetores e matrizes de C: arrays em TypeScript não têm tamanho fixo, e um conjunto de métodos prontos substitui boa parte dos laços manuais que você escrevia.
 
 ---
 
@@ -28,7 +28,7 @@ console.log(notas.length);       // 4 — equivalente ao sizeof(notas)/sizeof(no
 console.log(notas[notas.length - 1]);   // último elemento
 ```
 
-Diferença central em relação a C: arrays em TypeScript **crescem e diminuem dinamicamente** — não é preciso declarar um tamanho fixo.
+Diferença central em relação a C: arrays em TypeScript crescem e diminuem dinamicamente, sem declarar um tamanho fixo.
 
 ### Métodos de modificação
 
@@ -93,7 +93,7 @@ for (let i = 0; i < tabela.length; i++) {
 }
 ```
 
-Diferente de C, cada linha de uma matriz TypeScript pode ter um tamanho diferente (não é obrigatoriamente retangular) — é literalmente um array cujos elementos também são arrays.
+Diferente de C, cada linha de uma matriz TypeScript pode ter um tamanho diferente (não é obrigatoriamente retangular).
 
 ### Strings (cadeia de caracteres)
 

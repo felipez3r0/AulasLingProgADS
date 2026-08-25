@@ -47,7 +47,7 @@ URLs usam substantivos no plural (`/alunos`), nunca verbos (~~`/criarAluno`~~) �
 
 ### O contrato vem antes do código
 
-Um **contrato de API** é a especificação por escrito de cada endpoint: rota, payload de entrada, formato de resposta, e — importante — os casos de erro. Ele serve para três coisas: alinhar com quem faz o front antes de codar, virar os testes de endpoint (aula09), e ser o critério contra o qual você revisa código gerado por IA (se o gerado não bate com o contrato, tem algo errado, não importa se "parece funcionar").
+Um **contrato de API** é a especificação por escrito de cada endpoint: rota, payload de entrada, formato de resposta e casos de erro. Ele serve para alinhar com quem faz o front antes de codar e para virar os testes de endpoint (aula09). E é o critério contra o qual você revisa código gerado por IA: se o gerado não bate com o contrato, tem algo errado, mesmo que pareça funcionar.
 
 Use o template em [`recursos/template-contrato-api.md`](../recursos/template-contrato-api.md) para escrever o contrato de um recurso. Um exemplo preenchido:
 
@@ -105,5 +105,5 @@ APIs públicas gratuitas para praticar: [JSONPlaceholder](https://jsonplaceholde
 ## Critério de entrega
 
 - O contrato do Exercício 2 será o ponto de partida da aula09 — guarde-o, ele vai virar código.
-- Todo contrato entregue tem pelo menos 2 endpoints com erro documentado (não só o caminho feliz).
+- Todo contrato entregue tem pelo menos 2 endpoints com erro documentado.
 - Commit por exercício.

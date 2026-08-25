@@ -21,7 +21,7 @@ Variáveis, constantes, operadores e expressões. Estruturas de seleção e repe
 
 ## Por que esta disciplina é assim
 
-Você já programa em C. Esta disciplina não vai reensinar `if`, `for` e funções — vai mapear o que você sabe para TypeScript em poucas semanas e usar o tempo restante no que realmente muda quando se desenvolve com assistentes de IA:
+Você já programa em C. Esta disciplina não vai reensinar `if`, `for` e funções — vai mapear o que você sabe para TypeScript em poucas semanas e usar o tempo restante no que muda quando se desenvolve com assistentes de IA:
 
 - **Ler** código que você não escreveu e prever o que ele faz antes de executar.
 - **Especificar** o problema (contrato, tipos, casos de erro) antes de pedir ou escrever código.
@@ -107,11 +107,11 @@ O projeto é em grupo e atravessa três disciplinas do semestre:
 | Programação Web | Front-end em React |
 | **Linguagem de Programação I** | **Backend: API REST em TypeScript + Express** |
 
-Nesta disciplina avalia-se **somente o backend**, mas ele precisa ser o backend real que o front do grupo consome. Um backend que não atende ao contrato combinado com o front não cumpre o objetivo.
+Nesta disciplina avalia-se somente o backend, mas ele precisa ser o backend real que o front do grupo consome. Um backend que não atende ao contrato combinado com o front não cumpre o objetivo.
 
 Entregáveis obrigatórios (pasta `backend/` ou repositório próprio do grupo):
 
-- Contrato da API (endpoints, payloads, códigos de erro) escrito **antes** do código e alinhado com quem faz o front
+- Contrato da API (endpoints, payloads, códigos de erro) escrito antes do código e alinhado com quem faz o front
 - Testes com Vitest cobrindo os endpoints e os casos de erro
 - Código com tipagem, validação (Zod) e tratamento de erros
 - Persistência em SQLite via `@libsql/client` (arquivo local em desenvolvimento, Turso em produção); modelagem do banco é assunto de Banco de Dados I, aqui avalia-se o acesso a dados

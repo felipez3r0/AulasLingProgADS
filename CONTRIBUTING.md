@@ -1,6 +1,6 @@
 # Guia para revisão dos materiais (uso interno)
 
-Instruções para quem for reescrever ou manter as pastas de aula deste repositório. Não é conteúdo para o aluno — é a convenção de autoria do material.
+Instruções para quem for reescrever ou manter as pastas de aula deste repositório. É a convenção de autoria do material, não conteúdo para o aluno.
 
 ---
 

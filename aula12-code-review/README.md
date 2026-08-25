@@ -54,9 +54,8 @@ Use os 5 critérios de [`recursos/rubrica-code-review.md`](../recursos/rubrica-c
 
 ## Exercícios para casa
 
-- **Exercício 1 (Par):** revise o PR de outro colega (designado pelo professor) usando a rubrica completa; deixe pelo menos 3 comentários específicos (linha + observação).
-- **Exercício 2 (Tutor):** peça a uma IA para explicar a diferença entre um comentário de review "genérico" e um "acionável" — compare com os dois exemplos dados no conteúdo desta aula.
-- **Exercício 3 (Sem IA):** responda, sozinho, às threads que você recebeu no Exercício 1 do colega que revisou seu PR.
+- **Exercício 1 (Par):** revise o PR de outro colega (designado pelo professor) usando a rubrica completa, com pelo menos 3 comentários específicos (linha + observação). Quando o seu próprio PR for revisado, responda sozinho a cada thread recebida: corrija ou justifique.
+- **Exercício 2 (Tutor):** peça a uma IA para explicar a diferença entre um comentário de review "genérico" e um "acionável", e compare com os dois exemplos dados no conteúdo desta aula.
 
 ## Critério de entrega
 

@@ -64,7 +64,7 @@ const p: Produto = { nome: "Mouse", preco: 89.9, id: 1 };
 
 ### Arrays de objetos
 
-É onde a modelagem começa a valer a pena de verdade — combinando o que foi visto na aula04 (arrays/métodos) com interfaces:
+Combinando o que foi visto na aula04 (arrays/métodos) com interfaces:
 
 ```typescript
 interface Aluno { nome: string; idade: number; nota: number; }
