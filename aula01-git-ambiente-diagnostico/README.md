@@ -1,6 +1,6 @@
 # Aula 01 - Git/GitHub, Ambiente e Diagnóstico
 
-**Modo de IA: Sem IA** — editor sem assistente, sem chat, durante toda a aula (inclui a prova diagnóstica).
+**Modo de IA: Sem IA** — editor sem assistente, sem chat, durante toda a aula (inclui a prova diagnóstica). Os exercícios para casa indicam o próprio modo.
 
 ## Objetivos da aula
 

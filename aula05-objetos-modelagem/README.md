@@ -84,7 +84,14 @@ const media = turma.reduce((soma, a) => soma + a.nota, 0) / turma.length;
 interface Endereco { rua: string; cidade: string; }
 interface Funcionario { nome: string; endereco: Endereco; }   // interface dentro de interface
 
+const funcionario: Funcionario = {
+  nome: "Maria",
+  endereco: { rua: "Av. Brasil", cidade: "São Paulo" },
+};
+
 const { nome, endereco: { cidade } } = funcionario;            // destructuring aninhado
+
+const produto = { nome: "Mouse", preco: 100 };
 const comDesconto = { ...produto, preco: 90 };                  // spread: copia + sobrescreve
 ```
 
@@ -100,7 +107,7 @@ id = 42;                      // ok
 type StatusPedido = "pendente" | "processando" | "enviado" | "entregue";  // só esses valores
 ```
 
-> O restante de tipos avançados (type guards, enums, generics, utility types) fica em `recursos/typescript-tipos-avancados-opcional.md` — não é conteúdo obrigatório desta aula, mas pode ser útil no projeto final.
+> O restante de tipos avançados (type guards, enums, generics, utility types) fica em `../recursos/typescript-tipos-avancados-opcional.md` — não é conteúdo obrigatório desta aula, mas pode ser útil no projeto final.
 
 ---
 

@@ -106,12 +106,3 @@ const tamanho: number = (valor as string).length;
 ```
 
 > **Cuidado:** Type assertions podem esconder bugs. Prefira Type Guards sempre que possível.
-
-## Git - Stash
-
-```bash
-git stash
-git checkout outra-branch
-git checkout main
-git stash pop
-```

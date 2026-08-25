@@ -11,7 +11,7 @@
 ## Leitura prévia (antes da aula)
 
 - Instale as dependências do projeto-base: `cd aula10-sqlite-repository/projeto-base && npm install`, rode `npm test` e confira que passa (1 real + 6 pendentes).
-- Releia a seção "Referência vs Cópia" / passagem por valor da aula03 — não é o mesmo assunto, mas o cuidado de "o que exatamente está sendo compartilhado" volta aqui: uma `Client` de banco é compartilhada entre chamadas, não recriada a cada função.
+- Releia a seção "Passagem por valor vs por referência" da aula03. Não é o mesmo assunto, mas o cuidado de "o que exatamente está sendo compartilhado" volta aqui: uma `Client` de banco é compartilhada entre chamadas, não recriada a cada função.
 
 ---
 

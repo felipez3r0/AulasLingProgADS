@@ -15,7 +15,7 @@
 
 ---
 
-## O projeto
+## Conteúdo
 
 Descrito em detalhe no [README raiz](../README.md#projeto-final-integrador): backend REST em TypeScript + Express, avaliado nesta disciplina, mas que precisa ser o backend real que o front do grupo (Programação Web) consome. Entregáveis obrigatórios: contrato escrito antes do código, testes com Vitest, validação (Zod), tratamento de erros, persistência em SQLite via `@libsql/client`, API publicada, histórico Git com commits de todos os integrantes e ao menos um PR revisado, `DECISOES.md`, divisão de responsabilidades declarada.
 

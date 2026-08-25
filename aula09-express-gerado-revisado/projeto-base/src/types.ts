@@ -12,4 +12,5 @@ export type NovoAluno = Omit<Aluno, "id">;
 
 export interface ErroApi {
   erro: string;
+  detalhes?: unknown; // preenchido a partir da aula11, com os issues do Zod
 }

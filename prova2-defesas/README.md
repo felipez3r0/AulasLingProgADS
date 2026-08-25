@@ -8,7 +8,17 @@ Prova prática (prever saída, achar bug, explicar trecho) cobrindo os Blocos 3 
 
 ## Regras
 
-- TODO (Fase 4): tempo de prova, critério de sorteio para defesa, roteiro de perguntas.
+**Prova escrita:**
+
+- Individual, em sala, com duração de até 80 minutos.
+- Sem IA, sem consulta, sem executar código — mesmo formato da Prova 1 (prever saída / achar bug / explicar), agora sobre o conteúdo dos Blocos 3 e 4.
+
+**Defesa amostrada:**
+
+- 1 a 2 integrantes por grupo, sorteados no dia da prova — todos devem estar preparados.
+- 10 a 12 minutos por aluno, individual (o resto do grupo não intervém).
+- O sorteado demonstra um endpoint rodando, explica trechos do código do grupo apontados pelo professor (não necessariamente escritos por ele) e responde sobre decisões registradas no `DECISOES.md`.
+- Não saber explicar um trecho do próprio projeto reprova nesse critério, independentemente de quem o escreveu — é a regra 3 do [contrato de IA](../README.md#contrato-de-uso-de-ia).
 
 ## Banco de questões e roteiro de defesa
 

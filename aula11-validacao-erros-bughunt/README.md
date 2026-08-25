@@ -1,6 +1,6 @@
 # Aula 11 - Validação, Erros e Middleware: Bug Hunt
 
-**Modo de IA: Par** — nesta aula em particular, o "par" é encontrar e corrigir os defeitos; pode usar IA para explicar um trecho ou confirmar uma hipótese, mas o diagnóstico é seu.
+**Modo de IA: Par** — o código desta aula já foi gerado (com defeitos plantados); sua parte no par é o que vem depois da geração: revisar, diagnosticar e corrigir.
 
 ## Objetivos da aula
 
@@ -11,7 +11,8 @@
 ## Leitura prévia (antes da aula)
 
 - Instale as dependências compartilhadas desta aula: `cd aula11-validacao-erros-bughunt && npm install`.
-- Rode `npm test` **antes** de olhar qualquer código-fonte e leia as mensagens de falha — cada uma delas é a pista do bug correspondente.
+- Rode `npm test` antes de olhar qualquer código-fonte e leia as mensagens de falha — cada uma delas é a pista do bug correspondente.
+- A pasta `referencia/` é o **gabarito** (as versões corretas dos quatro bugs). Ela fica visível de propósito, como as respostas no fim de um livro: abrir antes de tentar mata o exercício e não engana ninguém além de você. Use-a só para conferir depois de corrigir.
 
 ---
 

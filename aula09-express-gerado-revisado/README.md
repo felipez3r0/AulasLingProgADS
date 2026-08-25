@@ -10,7 +10,7 @@
 
 ## Leitura prévia (antes da aula)
 
-- Tenha em mãos o contrato da API de "produtos" que você escreveu no Exercício 2 da aula08 — ele é matéria-prima da aula.
+- Tenha em mãos o contrato da API de **alunos** que você escreveu na Atividade 2 em sala da aula08 — o `projeto-base` desta aula implementa exatamente esse contrato. O contrato de produtos (Exercício 2 da aula08) será usado no Exercício 2 desta aula.
 - Instale as dependências do projeto-base: `cd aula09-express-gerado-revisado/projeto-base && npm install`, rode `npm test` e confira que passa (1 real + 8 pendentes) antes de vir para a aula.
 
 ---
@@ -83,7 +83,7 @@ it("retorna a lista de alunos", async () => {
 
 ## Exercícios para casa
 
-- **Exercício 1 (Par):** complete as 8 rotas pendentes de `aula09-express-gerado-revisado/projeto-base` seguindo o fluxo desta aula.
+- **Exercício 1 (Par):** complete as 4 rotas pendentes (8 testes `it.todo`) de `aula09-express-gerado-revisado/projeto-base`.
 - **Exercício 2 (Par):** a partir do contrato de "produtos" da aula08, crie um novo `projeto-base`-like (pode copiar a estrutura desta pasta) e gere as rotas de produtos do zero, contrato → teste → geração.
 - **Exercício 3 (Tutor):** depois de aceitar uma rota gerada, pergunte à IA (sem pedir para reescrever) *"que validação essa rota está deixando de fazer?"* e confira a resposta contra o próprio contrato — o agente pode ter esquecido algo que o contrato pedia.
 

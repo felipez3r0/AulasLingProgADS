@@ -4,7 +4,7 @@
 //
 // POST, GET /:id, PUT e DELETE estão de propósito NÃO registrados. É a
 // sua vez: complete os testes marcados it.todo em test/server.test.ts a
-// partir do contrato em recursos/template-contrato-api.md, peça a um
+// partir do contrato em ../../recursos/template-contrato-api.md, peça a um
 // agente de IA para implementar as rotas correspondentes aqui, e revise
 // o que ele gerar antes de aceitar (nomes de campos, códigos de status,
 // formato do corpo de erro).

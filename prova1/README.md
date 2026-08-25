@@ -8,7 +8,10 @@ Prova prática cobrindo os Blocos 1 e 2 (aulas 01–07): prever saída de códig
 
 ## Regras
 
-- TODO (Fase 2): tempo de prova, material permitido, critério de correção.
+- Individual, em sala, com duração de até 100 minutos.
+- Sem IA, sem consulta a material, sem executar código — a prova é de leitura e previsão.
+- Correção por questão: metade do valor pela resposta correta (saída prevista / bug identificado), metade pela justificativa em uma frase. Questões têm pesos iguais.
+- Resposta certa sem justificativa (ou com justificativa incoerente com a resposta) vale metade da questão.
 
 ## Banco de questões
 

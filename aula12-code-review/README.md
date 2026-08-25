@@ -1,6 +1,6 @@
 # Aula 12 - Code Review Cruzado de PRs com Rubrica
 
-**Modo de IA: Par** — pode usar IA para entender um trecho do PR que está revisando, não para gerar o comentário de review por você.
+**Modo de IA: Par** — o PR que você revisa nasceu do fluxo Par da aula11, e a revisão é a etapa final desse fluxo. IA pode ajudar a entender o código revisado; o comentário de review é seu.
 
 ## Objetivos da aula
 

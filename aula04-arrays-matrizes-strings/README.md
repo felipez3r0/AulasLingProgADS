@@ -118,7 +118,7 @@ console.log(nome.indexOf("Silva"));    // 4
 console.log(nome.slice(0, 3));         // "Ana"  — substring por índice
 console.log(nome.split(" "));          // ["Ana", "Silva"]
 console.log(nome.trim());              // remove espaços nas pontas
-console.log("  x  ".padStart(6, "-")); // "---  x  " (completa até o tamanho)
+console.log("  x  ".padStart(8, "-")); // "---  x  " (completa com "-" até 8 caracteres)
 ```
 
 Strings são **imutáveis**: todo método de string retorna uma nova string, nunca modifica a original (ao contrário de arrays, que têm métodos como `push` que alteram o original).

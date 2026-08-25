@@ -1,6 +1,6 @@
 # Rubrica de code review
 
-Usada na aula12 para revisar o PR de um colega, e depois no projeto final para os PRs cruzados dentro do grupo.
+Usada na aula12 para revisar o PR de um colega, na aula14 para a revisão cruzada entre grupos, e no projeto final para os PRs dentro do grupo.
 
 ## Critérios
 

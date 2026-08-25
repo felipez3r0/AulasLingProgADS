@@ -43,7 +43,7 @@ Preencha isto **antes** de escrever qualquer código de servidor (aula09) ou ped
 
 | Código | Quando acontece | Formato do corpo |
 |--------|------------------|-------------------|
-| 400 | Payload inválido (campo faltando, tipo errado) | `{ "erro": "mensagem descrevendo o campo" }` |
+| 400 | Payload inválido (campo faltando, tipo errado) | `{ "erro": "Dados inválidos", "detalhes": [...] }` — `detalhes` lista os campos rejeitados (na prática, os `issues` do Zod a partir da aula 11) |
 | 404 | `:id` não existe | `{ "erro": "Aluno não encontrado" }` |
 | 500 | Erro inesperado do servidor | `{ "erro": "Erro interno do servidor" }` |
 
@@ -57,6 +57,6 @@ Preencha isto **antes** de escrever qualquer código de servidor (aula09) ou ped
 ## Checklist antes de considerar o contrato pronto
 
 - [ ] Todo endpoint tem método + rota + descrição de uma linha.
-- [ ] Todo payload de request tem, por campo, se é obrigatório e qual a validação esperada (isso vira o schema Zod na aula11).
+- [ ] Todo payload de request tem, por campo, se é obrigatório e qual a validação esperada. Na aula09 essa validação é implementada à mão nas rotas; na aula11 ela vira um schema Zod — o contrato é o mesmo nos dois casos.
 - [ ] Todo endpoint tem pelo menos um caso de erro documentado (não só o caminho feliz).
 - [ ] Quem faz o front do grupo revisou e concorda com nomes de campos e formato de erro (evita retrabalho na integração).

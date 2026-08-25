@@ -40,7 +40,7 @@ Instruções para quem for reescrever ou manter as pastas de aula deste reposit�
 ## Convenções de tooling
 
 - **Test runner/framework:** [Vitest](https://vitest.dev) em todo `projeto-base/` que precisa de testes rodáveis. Script padrão `"test": "vitest run"` (execução única, sem watch). Ver `recursos/template-scaffolding/` para o modelo validado.
-- **Estrutura de scaffolding padrão** (aulas 06, 09, 10, 13-14):
+- **Estrutura de scaffolding padrão** (aulas 06, 09, 10, 11 e 13-14; a 11 usa o formato próprio descrito abaixo):
 
   ```
   aulaNN-tema/
@@ -56,7 +56,7 @@ Instruções para quem for reescrever ou manter as pastas de aula deste reposit�
 
   Cada `projeto-base/` é autocontido (própria instalação, próprio `npm test`) — não há `package.json`/`vitest.config.ts` compartilhado na raiz do repositório, para que uma pasta de aula funcione isolada se copiada/zipada.
 - **aula11-validacao-erros-bughunt** foge do padrão acima: usa `referencia/` (gabarito) + `bugs/01..04/{src,test}` em vez de um `projeto-base/` único.
-- Ao adicionar dependências em qualquer `projeto-base/`, prefira instalar sem pin de versão e depois **fixar a versão resolvida** no `package.json` (evita quebra de compatibilidade em reinstalações futuras ao longo do semestre) — foi assim que `recursos/template-scaffolding/` foi montado.
+- Ao adicionar dependências em qualquer `projeto-base/`, instale sem pin de versão e depois registre no `package.json` a versão resolvida com caret (ex.: `"vitest": "^4.1.11"`), commitando o `package-lock.json` junto. Foi assim que `recursos/template-scaffolding/` foi montado — evita `latest` solto sem congelar o material num patch específico.
 
 ## Sigilo de provas
 

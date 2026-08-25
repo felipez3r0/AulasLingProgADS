@@ -134,9 +134,22 @@ Recomendação: o grupo não deve dividir "quem faz front" e "quem faz back". To
 
 ```bash
 git clone <url-do-repositorio>
-cd AulasLingProgADS/aula02-de-c-para-ts
-npm install   # quando houver package.json
+cd AulasLingProgADS/aula06-testes/projeto-base
+npm install   # nas pastas de aula que têm package.json (06, 09, 10, 11, 13-14)
 ```
+
+---
+
+## Materiais de apoio
+
+A pasta [recursos/](recursos/) reúne os artefatos usados em várias aulas e no projeto:
+
+- [Template de contrato de API](recursos/template-contrato-api.md) — usado a partir da aula 08
+- [Rubrica de code review](recursos/rubrica-code-review.md) — aulas 12 e 14, e PRs do projeto
+- [Template de DECISOES.md](recursos/template-decisoes.md) — log de uso de IA do projeto final
+- [Roteiro de deploy Render + Turso](recursos/roteiro-deploy-render-turso.md) — aula 14
+- [Template de scaffolding](recursos/template-scaffolding/) — a estrutura base dos `projeto-base/` das aulas práticas
+- Material opcional de aprofundamento: [tipos avançados de TypeScript](recursos/typescript-tipos-avancados-opcional.md) e [bibliotecas externas do ecossistema Node](recursos/bibliotecas-externas-opcional.md)
 
 ---
 
