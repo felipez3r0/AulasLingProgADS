@@ -343,3 +343,80 @@ O Copilot brilha ao sugerir funções. Experimente:
 
 - [TypeScript - Functions](https://www.typescriptlang.org/docs/handbook/2/functions.html)
 - [MDN - Functions](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Functions)
+
+---
+
+<!-- MIGRAR: origem aula06-arrays-metodos / aula04-arrays-matrizes-strings (seção "Referência vs Cópia") -->
+
+## Referência vs Cópia
+
+### Cuidado! Arrays e objetos são passados por referência
+
+```typescript
+const original: number[] = [1, 2, 3];
+
+// Isso NÃO cria uma cópia - ambas apontam para o mesmo array!
+const referência = original;
+referência.push(4);
+console.log(original);  // [1, 2, 3, 4] <- original também mudou!
+
+// Para copiar de verdade, use spread:
+const cópia = [...original];
+cópia.push(5);
+console.log(original);  // [1, 2, 3, 4] <- original não mudou
+console.log(cópia);     // [1, 2, 3, 4, 5]
+```
+
+> **Comparando com C:** Em C, arrays são passados como ponteiros para funções (passagem por referência). O conceito é similar: ao atribuir um array/objeto a outra variável em TS, ambas referenciam o mesmo espaço na memória. Isso é o que a ementa chama de "passagem de parâmetros por valor e referência" — primitivos (number, string, boolean) são passados por valor (cópia); arrays e objetos são passados por referência.
+
+<!-- FIM MIGRAR -->
+
+<!-- MIGRAR: origem aula09-modulos-bibliotecas (seção 2, Export e Import) -->
+
+## Módulos: Export e Import
+
+> **Comparando com C:** Em C, você usa `#include "header.h"` para incluir declarações de outros arquivos. Em TypeScript, usamos `import`/`export`.
+
+### Named exports
+
+```typescript
+// src/matematica.ts
+export function somar(a: number, b: number): number {
+  return a + b;
+}
+
+export const PI: number = 3.14159;
+```
+
+```typescript
+// src/index.ts
+import { somar, PI } from "./matematica";
+
+console.log(somar(5, 3));   // 8
+```
+
+### Default export
+
+```typescript
+// src/calculadora.ts
+export default class Calculadora {
+  somar(a: number, b: number): number {
+    return a + b;
+  }
+}
+```
+
+```typescript
+// src/index.ts
+import Calculadora from "./calculadora";  // sem chaves
+
+const calc = new Calculadora();
+```
+
+### Renomeando imports
+
+```typescript
+import { somar as add } from "./matematica";
+```
+
+<!-- FIM MIGRAR -->

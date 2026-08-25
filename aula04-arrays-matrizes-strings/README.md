@@ -355,3 +355,33 @@ Os métodos `map`, `filter` e `reduce` podem ser confusos no início. Use o Copi
 
 - [MDN - Array](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array)
 - [TypeScript - Arrays](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#arrays)
+
+---
+
+<!-- MIGRAR: origem aula04-desvio-malhas (seção "Laços Aninhados", base para matrizes) -->
+
+## Laços Aninhados (base para matrizes)
+
+```typescript
+// Tabela de multiplicação 1 a 5
+for (let i: number = 1; i <= 5; i++) {
+  let linha: string = "";
+  for (let j: number = 1; j <= 5; j++) {
+    linha += `${(i * j).toString().padStart(4)}`;
+  }
+  console.log(linha);
+}
+```
+
+Saída:
+```
+   1   2   3   4   5
+   2   4   6   8  10
+   3   6   9  12  15
+   4   8  12  16  20
+   5  10  15  20  25
+```
+
+> Esse padrão de laço aninhado (linha x coluna) é a base para percorrer matrizes (arrays de arrays) — assunto central desta aula nova.
+
+<!-- FIM MIGRAR -->

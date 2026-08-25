@@ -306,31 +306,11 @@ main();
 
 ---
 
-## 6. Async/Await - Revisão Rápida
-
-```typescript
-// Função assíncrona - retorna uma Promise
-async function buscarDados(): Promise<string> {
-  // await "espera" a Promise resolver
-  const resposta = await fetch("https://api.exemplo.com/dados");
-  const dados = await resposta.json();
-  return dados;
-}
-
-// Chamando função assíncrona
-async function main(): Promise<void> {
-  const resultado = await buscarDados();
-  console.log(resultado);
-}
-
-main();
-```
-
-> **Regra:** Sempre que usar `await`, a função precisa ser `async`. E o ponto de entrada (`main`) também precisa ser `async`.
+> Assincronia (`async`/`await`) já foi vista na aula07 — aqui ela é aplicada especificamente a chamadas HTTP.
 
 ---
 
-## 7. Git - Branches para features
+## 6. Git - Branches para features
 
 Ao começar uma nova funcionalidade:
 

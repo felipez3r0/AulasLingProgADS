@@ -410,3 +410,33 @@ Crie `src/config.ts`:
 
 - [Node.js - File System](https://nodejs.org/docs/latest/api/fs.html)
 - [Node.js - Path](https://nodejs.org/docs/latest/api/path.html)
+
+---
+
+<!-- MIGRAR: origem aula11-intro-apis-rest (seção 6, Async/Await) -->
+
+## Assincronia: Promises e async/await
+
+```typescript
+// Função assíncrona - retorna uma Promise
+async function buscarDados(): Promise<string> {
+  // await "espera" a Promise resolver
+  const resposta = await fetch("https://api.exemplo.com/dados");
+  const dados = await resposta.json();
+  return dados;
+}
+
+// Chamando função assíncrona
+async function main(): Promise<void> {
+  const resultado = await buscarDados();
+  console.log(resultado);
+}
+
+main();
+```
+
+> **Regra:** Sempre que usar `await`, a função precisa ser `async`. E o ponto de entrada (`main`) também precisa ser `async`.
+
+> Esta aula trata assincronia como conteúdo próprio, antes de qualquer código de servidor — `fs/promises` reaproveita a mesma sintaxe `async/await` que será usada com `fetch` (aula08) e Express (aula09) mais adiante.
+
+<!-- FIM MIGRAR -->

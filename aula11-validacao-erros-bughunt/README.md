@@ -488,3 +488,54 @@ Crie uma API completa de tarefas (to-do) com:
 
 - [Zod - Documentacao](https://zod.dev/)
 - [Express - Error Handling](https://expressjs.com/en/guide/error-handling.html)
+
+---
+
+<!-- MIGRAR: origem aula13-express-crud-middlewares (seções 1-2, conceito de Middleware) -->
+
+## O que são Middlewares? (conceito, referência)
+
+Middlewares são funções que executam **entre** a requisição e a resposta. Eles podem:
+
+- Modificar a requisição (`req`) ou resposta (`res`)
+- Executar lógica (logs, autenticação, validação)
+- Encerrar o ciclo de requisição
+- Chamar o próximo middleware com `next()`
+
+```
+Requisição -> [Middleware 1] -> [Middleware 2] -> [Rota] -> Resposta
+```
+
+### Anatomia de um middleware
+
+```typescript
+import { Request, Response, NextFunction } from "express";
+
+function meuMiddleware(req: Request, res: Response, next: NextFunction): void {
+  console.log("Middleware executado!");
+  next(); // IMPORTANTE: chame next() para passar ao próximo middleware/rota
+}
+
+app.use(meuMiddleware);
+```
+
+### Middleware de tratamento de erros
+
+Middleware de erro tem **4 parâmetros** (o primeiro é o erro) e deve ser o **último** middleware registrado — a ordem incorreta é justamente um dos defeitos plantados no bug hunt desta aula:
+
+```typescript
+function tratarErros(
+  erro: Error,
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void {
+  console.error(`[ERRO] ${erro.message}`);
+  res.status(500).json({ erro: "Erro interno do servidor", mensagem: erro.message });
+}
+
+// DEVE ser o último middleware registrado
+app.use(tratarErros);
+```
+
+<!-- FIM MIGRAR -->

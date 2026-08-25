@@ -432,3 +432,328 @@ O Copilot funciona muito bem com TypeScript por conta da tipagem. Experimente:
 
 - [TypeScript - Documentação Oficial](https://www.typescriptlang.org/docs/)
 - [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
+
+---
+
+<!-- MIGRAR: origem aula02-intro-js-node (resto do conteúdo, exceto instalação e VS Code que foram para aula01) -->
+
+## O que é JavaScript?
+
+JavaScript é a linguagem de programação mais utilizada no mundo. Originalmente criada para rodar dentro de navegadores (Chrome, Firefox etc.), hoje pode ser usada em:
+
+- **Frontend:** interfaces web (React, Angular, Vue)
+- **Backend:** servidores e APIs (Node.js)
+- **Mobile:** aplicativos (React Native)
+- **Desktop:** aplicativos (Electron)
+
+### JavaScript vs C - Diferenças principais
+
+| Característica  | C                                   | JavaScript                        |
+| --------------- | ------------------------------------ | ---------------------------------- |
+| Tipagem         | Estática (int, float, char)          | Dinâmica (tipos inferidos)         |
+| Compilação      | Compilado (gcc)                      | Interpretado / JIT                 |
+| Memória         | Gerenciamento manual (malloc/free)   | Garbage Collector automático       |
+| Ponto e vírgula | Obrigatório                          | Opcional (mas recomendado)         |
+| Paradigma       | Procedural                           | Multi-paradigma (funcional, OOP)   |
+
+## O que é Node.js?
+
+**Node.js** é um **runtime** que permite executar JavaScript fora do navegador. Ele usa o motor V8 do Google Chrome.
+
+### Por que Node.js?
+
+- Mesmo idioma no frontend e backend
+- Enorme ecossistema de pacotes (npm)
+- Excelente para APIs e aplicações em tempo real
+
+## Primeiros passos - Executando JavaScript
+
+### Modo interativo (REPL)
+
+```bash
+node
+```
+
+```javascript
+> 2 + 2
+4
+> "Olá" + " Mundo"
+'Olá Mundo'
+> .exit
+```
+
+### Executando um arquivo
+
+```javascript
+console.log('Olá, mundo!');
+const nome = 'Estudante';
+console.log('Bem-vindo, ' + nome + '!');
+```
+
+```bash
+node hello.js
+```
+
+> **Comparando com C:** Em C você precisaria de `#include <stdio.h>`, da função `main()`, compilar com `gcc` e depois executar. Em Node, basta escrever e rodar.
+
+## Inicializando um Projeto Node.js
+
+### Criando o projeto
+
+```bash
+mkdir meu-projeto
+cd meu-projeto
+npm init -y
+```
+
+A flag `-y` aceita todas as opções padrão. Isso cria o arquivo `package.json`.
+
+### Entendendo o package.json
+
+```json
+{
+  "name": "meu-projeto",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
+```
+
+### Adicionando scripts personalizados
+
+```json
+{
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  }
+}
+```
+
+```bash
+npm start        # Executa node index.js
+npm run dev      # Executa com --watch (reinicia ao salvar)
+```
+
+## Sintaxe Básica do JavaScript
+
+### Variáveis
+
+```javascript
+var antigaForma = 'evite usar var'; // escopo global/função (problemático)
+let idade = 20; // escopo de bloco (use para valores que mudam)
+const PI = 3.14159; // constante (use para valores fixos)
+```
+
+**Regra prática:** Use `const` por padrão. Só use `let` quando precisar reatribuir.
+
+### Tipos de dados
+
+```javascript
+const nome = 'Maria';
+const idade = 25;
+const altura = 1.68;
+const aprovado = true;
+const vazio = null; // ausência intencional de valor
+let indefinido; // declarada, mas sem valor atribuído (undefined)
+```
+
+> **Diferença do C:** Em C existem `int`, `float`, `double` e `char`. Em JS, `number` abrange todos os numéricos, e não existe `char` (apenas `string`).
+
+### Template Literals
+
+```javascript
+const nome = 'Carlos';
+const idade = 22;
+
+console.log('Nome: ' + nome + ', Idade: ' + idade); // concatenação clássica
+console.log(`Nome: ${nome}, Idade: ${idade}`);       // template literal
+```
+
+### Entrada de dados pelo terminal
+
+```javascript
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.question('Qual é o seu nome? ', (resposta) => {
+  console.log(`Olá, ${resposta}!`);
+  rl.close();
+});
+```
+
+> **Comparando com C:** Equivalente ao `scanf()` ou `fgets()`. A diferença é que em Node a leitura é **assíncrona** (aula 07).
+
+<!-- FIM MIGRAR -->
+
+<!-- MIGRAR: origem aula04-desvio-malhas (conteúdo inteiro) -->
+
+## Estruturas Condicionais
+
+### if / else
+
+```typescript
+const nota: number = 7.5;
+
+if (nota >= 6) {
+  console.log("Aprovado");
+} else {
+  console.log("Reprovado");
+}
+```
+
+> **Comparando com C:** A sintaxe é idêntica. A única diferença é que em TypeScript a variável tem tipo anotado.
+
+### else if
+
+```typescript
+const nota: number = 8.5;
+
+if (nota >= 9) {
+  console.log("Conceito A");
+} else if (nota >= 7) {
+  console.log("Conceito B");
+} else if (nota >= 5) {
+  console.log("Conceito C");
+} else {
+  console.log("Conceito D");
+}
+```
+
+### Operador ternário
+
+```typescript
+const idade: number = 17;
+const categoria: string = idade >= 18 ? "adulto" : "menor";
+```
+
+### switch
+
+```typescript
+const diaSemana: number = 3;
+
+switch (diaSemana) {
+  case 1:
+    console.log("Segunda-feira");
+    break;
+  case 6:
+  case 7:
+    console.log("Final de semana");
+    break;
+  default:
+    console.log("Dia inválido");
+}
+```
+
+> **Atenção ao `break`!** Sem ele, a execução "cai" para o próximo case (fall-through), exatamente como em C.
+
+Diferente do C, TypeScript permite `switch` com strings:
+
+```typescript
+const operacao: string = "soma";
+
+switch (operacao) {
+  case "soma":
+    console.log(10 + 5);
+    break;
+  default:
+    console.log("Operação desconhecida");
+}
+```
+
+## Estruturas de Repetição
+
+### for
+
+```typescript
+for (let i: number = 0; i < 5; i++) {
+  console.log(`Iteração ${i}`);
+}
+```
+
+### while
+
+```typescript
+let contador: number = 0;
+
+while (contador < 5) {
+  console.log(`Contador: ${contador}`);
+  contador++;
+}
+```
+
+### do...while
+
+```typescript
+let tentativas: number = 0;
+
+do {
+  console.log(`Tentativa ${tentativas + 1}`);
+  tentativas++;
+} while (tentativas < 3);
+```
+
+> **Quando usar cada um?**
+> - `for`: quando você sabe o número de iterações
+> - `while`: quando depende de uma condição dinâmica
+> - `do...while`: quando precisa executar pelo menos uma vez (ex: menus)
+
+### break e continue
+
+```typescript
+for (let i: number = 0; i < 100; i++) {
+  if (i === 5) break;
+  console.log(i);
+}
+
+for (let i: number = 0; i < 10; i++) {
+  if (i % 2 !== 0) continue;
+  console.log(i);
+}
+```
+
+### for...of (exclusivo do JavaScript/TypeScript)
+
+```typescript
+const frutas: string[] = ["maçã", "banana", "laranja"];
+
+for (const fruta of frutas) {
+  console.log(fruta);
+}
+```
+
+> Isso não existe em C. É muito mais prático que iterar com índice quando você só precisa dos valores.
+
+## Exemplos Práticos Combinados
+
+```typescript
+// Números primos
+function ehPrimo(n: number): boolean {
+  if (n < 2) return false;
+  for (let i: number = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) return false;
+  }
+  return true;
+}
+```
+
+```typescript
+// Fibonacci
+const quantidade: number = 15;
+let anterior: number = 0;
+let atual: number = 1;
+
+for (let i: number = 2; i < quantidade; i++) {
+  const proximo: number = anterior + atual;
+  anterior = atual;
+  atual = proximo;
+}
+```
+
+<!-- FIM MIGRAR -->

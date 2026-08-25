@@ -386,3 +386,39 @@ O Copilot é excelente para gerar interfaces a partir de exemplos:
 
 - [TypeScript - Object Types](https://www.typescriptlang.org/docs/handbook/2/objects.html)
 - [TypeScript - Interfaces](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#interfaces)
+
+---
+
+<!-- MIGRAR: origem aula08-tipos-avancados (trecho compacto: Union Types e Literal Types) -->
+
+## Union Types (referência rápida)
+
+Um valor que pode ser de **mais de um tipo**:
+
+```typescript
+let id: string | number;
+
+id = "ABC123";  // ok
+id = 42;        // ok
+// id = true;   // ERRO! boolean não está na união
+```
+
+> **Comparando com C:** Em C, `union` permite que uma variável armazene diferentes tipos no mesmo espaço de memória. Em TypeScript, Union Types são verificados em tempo de compilação — mais seguros.
+
+## Literal Types (referência rápida)
+
+Tipos que aceitam apenas **valores específicos**:
+
+```typescript
+type StatusPedido = "pendente" | "processando" | "enviado" | "entregue" | "cancelado";
+
+interface Pedido {
+  id: number;
+  produto: string;
+  status: StatusPedido;
+}
+```
+
+> O restante de tipos avançados (type guards, enums, generics, utility types, type assertions) fica arquivado em `recursos/typescript-tipos-avancados-opcional.md` como material de referência — não é conteúdo obrigatório desta aula.
+
+<!-- FIM MIGRAR -->

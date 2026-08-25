@@ -341,3 +341,57 @@ O **GitHub Copilot Chat** no VS Code pode te ajudar com Git. Experimente pergunt
 
 - [Git - Documentação Oficial](https://git-scm.com/doc)
 - [GitHub Docs - Quickstart](https://docs.github.com/en/get-started/quickstart)
+
+---
+
+<!-- MIGRAR: origem aula02-intro-js-node (Instalação do Node.js e Configuração do VS Code) -->
+
+## Instalação do Node.js
+
+### Instalando
+
+**Recomendado:** Baixe a versão **LTS** (Long Term Support) em https://nodejs.org
+
+**macOS (com Homebrew):**
+
+```bash
+brew install node
+```
+
+**Linux (Ubuntu/Debian):**
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt install -y nodejs
+```
+
+### Verificando a instalação
+
+```bash
+node --version
+# v20.x.x (ou superior)
+
+npm --version
+# 10.x.x (ou superior)
+```
+
+O `npm` (Node Package Manager) é instalado automaticamente junto com o Node.
+
+## VS Code - Configuração Recomendada
+
+### Extensões úteis
+
+1. **GitHub Copilot** (ou assistente equivalente) - assistente de IA para código
+2. **ESLint** - detecta erros e problemas no código
+3. **Prettier** - formatação automática
+
+### Atalhos essenciais
+
+| Atalho             | Ação                             |
+| ------------------ | -------------------------------- |
+| `Ctrl + '`         | Abrir/fechar terminal integrado  |
+| `Ctrl + S`         | Salvar arquivo                   |
+| `Ctrl + Shift + P` | Paleta de comandos               |
+| `Ctrl + P`         | Buscar arquivo por nome          |
+
+<!-- FIM MIGRAR -->
