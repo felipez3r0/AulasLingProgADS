@@ -1,31 +1,73 @@
 # Aula 06 - Testes com Vitest: você escreve os testes, a IA implementa
 
-**Modo de IA: Par** — você escreve a especificação e os testes antes; a IA gera a implementação; você revisa o que foi gerado.
+**Modo de IA: Par** — você escreve a especificação e os testes antes; a IA gera a implementação; você revisa o que foi gerado antes de aceitar.
 
-## Objetivos da Aula
+## Objetivos da aula
 
-- TODO (Fase 2): definir objetivos como "saber fazer" — ex.: escrever um teste com Vitest antes de existir implementação; guiar um agente de IA a partir de testes; julgar se uma implementação gerada realmente satisfaz a especificação.
+- Escrever um teste automatizado com Vitest **antes** de existir implementação.
+- Guiar um agente de IA a implementar código a partir de um teste, não de uma descrição vaga.
+- Julgar se uma implementação gerada realmente satisfaz a especificação — e identificar quando ela "engana" o teste sem resolver o problema de verdade.
 
-## Leitura prévia
+## Leitura prévia (antes da aula)
 
-- TODO (Fase 2)
-
-## Conteúdo
-
-- TODO (Fase 2): introdução mínima a Vitest (`describe`/`it`/`expect`) — sem reensinar lógica, só a convenção de teste.
-
-## Atividades em sala
-
-- TODO (Fase 2): pelo menos uma atividade de leitura/previsão ou verificação, não só de escrita.
-
-## Exercícios para casa
-
-- TODO (Fase 2), com modo de IA indicado por exercício.
-
-## Critério de entrega
-
-- TODO (Fase 2)
+- Instale as dependências do projeto-base desta aula: `cd aula06-testes/projeto-base && npm install`.
+- Rode `npm test` e confira que passa (4 testes reais + 3 pendentes) antes de vir para a aula — se não passar, avise o professor com antecedência.
 
 ---
 
-> Nota de reescrita: primeira aula a usar `projeto-base/` com scaffolding real (`package.json`, `src/`, `test/` — ver `recursos/template-scaffolding/`). Domínio de dados sugerido: inspirar-se no domínio "Aluno" já usado em `aula05-objetos-modelagem` e no padrão de repository do histórico da antiga `aula13-express-crud-middlewares` (ver `git log` desta branch antes do commit de reestruturação). Ver plano em `/Users/felipe/.claude/plans/users-felipe-downloads-readme-1-md-esto-rosy-hejlsberg.md`, Fase 2.
+## Conteúdo
+
+### Por que testar antes de implementar, especialmente com IA
+
+Um teste é uma **especificação executável**: em vez de descrever em português o que uma função deve fazer, você escreve um exemplo concreto de entrada e saída esperada. Isso importa ainda mais quando quem vai escrever o código é uma IA — um teste escrito por você é o critério objetivo que decide se o que foi gerado está certo, em vez de você precisar ler linha por linha e confiar no "parece certo".
+
+### Anatomia de um teste em Vitest
+
+```typescript
+import { describe, expect, it } from "vitest";
+import { calcularMedia } from "../src/turma.js";
+
+describe("calcularMedia", () => {
+  it("retorna a média aritmética de um array de notas", () => {
+    expect(calcularMedia([8, 6, 10])).toBe(8);
+  });
+
+  it("retorna 0 para array vazio", () => {
+    expect(calcularMedia([])).toBe(0);
+  });
+});
+```
+
+- `describe` agrupa testes relacionados (geralmente por função).
+- `it` (ou `test`) descreve **um** comportamento esperado, em uma frase.
+- `expect(valor).toBe(esperado)` é a asserção — existem outras (`toEqual` para objetos/arrays, `toThrow` para erros, `toBeGreaterThan`, etc.).
+- `it.todo("descrição")` marca um teste que ainda não foi escrito, sem falhar a suíte — é o que você troca por um `it()` real conforme avança.
+
+Rodar: `npm test` (executa tudo uma vez e sai — sem modo watch).
+
+### O fluxo desta aula
+
+1. **Leia** a assinatura da função ainda não implementada em `src/turma.ts` (`estaAprovado`, `aprovados`) e o `it.todo` correspondente em `test/turma.test.ts`.
+2. **Escreva o teste primeiro**: troque o `it.todo` por um `it()` real, com pelo menos um caso normal e um caso de borda (ex.: média exatamente 6, array vazio).
+3. **Rode `npm test`** — o teste deve falhar (a função ainda lança `"não implementado"`). Isso é esperado e confirma que o teste está de fato testando algo.
+4. **Peça à IA para implementar** só o suficiente para o teste passar — cole a assinatura da função e o teste, não uma descrição solta do problema.
+5. **Rode `npm test`** de novo. Se passou, **leia a implementação antes de aceitar**: ela resolve o problema de verdade, ou só satisfaz os casos exatos do seu teste (ex.: um `if` cravado no valor do teste)? Se desconfiar, adicione mais um caso de teste e rode de novo.
+
+---
+
+## Atividades em sala
+
+1. **Leitura/verificação:** em dupla, um aluno escreve um teste para `estaAprovado` sem mostrar ao colega; o colega tenta prever, só lendo o teste, o que a função deveria fazer — depois compara com a intenção original.
+2. **Implementação assistida:** cada aluno completa `estaAprovado` e `aprovados` seguindo o fluxo de 5 passos acima, com o professor circulando para revisar se a implementação gerada realmente atende ao teste ou só "decorou" o caso.
+
+## Exercícios para casa
+
+- **Exercício 1 (Par):** complete `estaAprovado` e `aprovados` em `aula06-testes/projeto-base/src/turma.ts`, seguindo o fluxo desta aula.
+- **Exercício 2 (Par):** adicione uma função nova `melhorAluno(turma: Aluno[]): Aluno | undefined` (quem tem a maior média) — escreva o teste primeiro, incluindo o caso de turma vazia, antes de pedir a implementação.
+- **Exercício 3 (Tutor):** depois de aceitar a implementação de `aprovados`, pergunte à IA (sem pedir para reescrever) *"essa implementação está considerando o array original, ou está mutando a turma recebida?"* — confira a resposta contra o próprio código.
+
+## Critério de entrega
+
+- `npm test` passa sem nenhum `it.todo` restante em `test/turma.test.ts`.
+- Pelo menos um teste por função cobre um caso de borda (não só o "caminho feliz").
+- Commit com uma frase, por função implementada, dizendo se você aceitou a implementação gerada como veio ou precisou ajustar — e por quê.
